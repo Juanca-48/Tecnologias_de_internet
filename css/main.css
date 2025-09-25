@@ -31,21 +31,25 @@ body {
 
 .logo {
     height: 70px;
-    background: #4ecdc4;
-    border-radius: 10px;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    color: white;
-    font-weight: bold;
+    padding: 0 10px;
     text-decoration: none;
     transition: all 0.3s ease;
+    border-radius: 10px;
 }
 
 .logo:hover {
-    background: #45b8b0;
     transform: scale(1.05);
-    color: white;
+}
+
+.logo-img {
+    max-height: 100%;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
 }
 
 .nav-menu {
