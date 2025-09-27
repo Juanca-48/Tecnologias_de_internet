@@ -23,9 +23,12 @@ gap: 32px;
 }
 
 .menu2{
-  display: flex;
-padding: 8px 16px;
-align-items: center;
+      color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 .menu2:hover {
 background: rgba(78, 205, 196, 0.1);
