@@ -5,15 +5,17 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    overflow-x: hidden;
+     font-family: Inter, sans-serif;
+  font-size: 1rem;
+  background: #fff;
+  min-height: 100vh;
+  color: #333;
 }
 
 .container {
-    width: 100%;
-    min-height: 100vh;
-    background: #fff;
+min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ========== HEADER STYLES (con barra de búsqueda de social.css) ========== */
@@ -63,9 +65,9 @@ body {
 
 /* Barra de búsqueda centrada */
 .search-center {
-    position: absolute;
+  
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(20%);
 }
 
 .search-bar {
