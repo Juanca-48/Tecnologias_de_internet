@@ -14,19 +14,15 @@ body {
 .v479_366 {
     width: 100%;
     min-height: 100vh;
-    background: #fff;
 }
 
 .v479_367 {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
-    position: relative;
-    overflow-x: hidden;
 }
 
-/* ========== HEADER STYLES (estilo main.css + barra de búsqueda centrada) ========== */
-.v479_368 {
+/* Header actualizado */
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +38,7 @@ body {
     gap: 20px;
 }
 
-/* Logo (estilo main.css) */
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
@@ -72,9 +68,44 @@ body {
 
 /* Barra de búsqueda centrada */
 .search-center {
- 
     left: 50%;
     transform: translateX(20%);
+}
+
+.search-bar {
+    width: 400px;
+    max-width: 400px;
+    min-width: 300px;
+    height: 45px;
+    background: rgba(215,215,215,1);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+.search-bar:hover {
+    background: rgba(200,200,200,1);
+    transform: translateY(-1px);
+}
+
+.search-input {
+    color: rgba(0,0,0,0.7);
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    text-align: center;
+    width: 100%;
+}
+
+.search-input::placeholder {
+    color: rgba(0,0,0,0.5);
+    text-align: center;
 }
 
 .nav-item {
@@ -116,50 +147,7 @@ body {
     font-weight: 600;
 }
 
-/* Barra de búsqueda centrada */
-.v480_506 {
-    width: 400px;
-    max-width: 400px;
-    min-width: 300px;
-    height: 45px;
-    background: rgba(215,215,215,1);
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    transition: all 0.3s ease;
-}
-
-.v480_506:hover {
-    background: rgba(200,200,200,1);
-    transform: translateY(-1px);
-}
-
-.v480_507 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.v480_520 {
-    color: rgba(0,0,0,0.7);
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 16px;
-    flex: 1;
-    border: none;
-    background: transparent;
-    outline: none;
-    text-align: center;
-}
-
-.v480_520::placeholder {
-    color: rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-/* Profile button estandarizado (estilo main.css) */
+/* Profile button */
 .profile-btn {
     width: 50px;
     height: 50px;
@@ -169,11 +157,20 @@ body {
     transition: all 0.3s ease;
     border: none;
     background: linear-gradient(45deg, #4ecdc4, #667eea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 5px 15px rgba(78,205,196,0.4);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Main content */
@@ -213,6 +210,9 @@ body {
     padding: 32px;
     text-align: center;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .v480_522:hover {
@@ -301,6 +301,11 @@ body {
 .v481_550:hover, .v481_564:hover, .v481_572:hover {
     background: rgba(255,255,255,0.2);
     transform: translateY(-2px);
+}
+
+.v481_552, .v481_566, .v481_574 {
+    display: flex;
+    align-items: center;
 }
 
 .v481_598, .v481_599, .v481_601 {
@@ -499,6 +504,10 @@ body {
     transform: translateY(-2px);
 }
 
+.v490_271, .v490_275, .v490_279, .v490_288, .v490_292, .v490_296 {
+    flex: 1;
+}
+
 .v490_308, .v490_314, .v490_311 {
     width: 50px;
     height: 50px;
@@ -546,39 +555,12 @@ body {
     .v480_504 {
         display: none;
     }
-}
-
-/* Tablets pequeñas */
-@media screen and (max-width: 900px) {
-    .v479_378 {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
     
-    .v480_448 {
-        order: 2;
-        max-width: none;
-    }
-    
-    .v480_447 {
-        order: 1;
-        max-width: none;
-    }
-    
-    .v479_380, .v490_253 {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-}
-
-/* ========== RESPONSIVE PARA NUEVA NAVEGACIÓN ========== */
-
-/* Tablets grandes */
-@media screen and (max-width: 1200px) {
     .nav-menu {
         gap: 1.5rem;
     }
     
-    .v480_506 {
+    .search-bar {
         width: 300px;
         min-width: 200px;
     }
@@ -586,25 +568,45 @@ body {
 
 /* Tablets */
 @media screen and (max-width: 992px) {
-    .v479_368 {
+    .header {
         padding: 1rem 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .search-center {
+        position: static;
+        transform: none;
+        order: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .logo {
+        order: 2;
     }
     
     .nav-menu {
-        position: static;
-        transform: none;
-        gap: 1rem;
+        order: 3;
+        margin: 0;
+        gap: 0.8rem;
     }
     
-    .v480_506 {
-        width: 250px;
+    .profile-btn {
+        order: 4;
+    }
+    
+    .search-bar {
+        width: 350px;
         min-width: 200px;
     }
 }
 
-/* Tablets pequeñas */
+/* Tablets muy pequeñas */
 @media screen and (max-width: 768px) {
-    .v479_368 {
+    .header {
         padding: 1rem;
         flex-direction: column;
         gap: 1rem;
@@ -614,14 +616,20 @@ body {
         gap: 1rem;
         flex-wrap: wrap;
         justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
     }
     
-    .header-right {
+    .search-center {
+        position: static;
+        left: auto;
+        transform: none;
         width: 100%;
+        display: flex;
         justify-content: center;
     }
     
-    .v480_506 {
+    .search-bar {
         width: 100%;
         max-width: 400px;
         min-width: 250px;
@@ -664,8 +672,9 @@ body {
     }
 }
 
+/* Móviles */
 @media screen and (max-width: 480px) {
-    .v479_368 {
+    .header {
         padding: 0.5rem;
     }
     
@@ -673,7 +682,7 @@ body {
         display: none; /* Ocultar navegación en móviles muy pequeños */
     }
     
-    .v480_506 {
+    .search-bar {
         min-width: 180px;
         height: 40px;
     }
