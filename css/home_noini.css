@@ -29,8 +29,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 
-    gap: 32px;
 }
 
 .SIGN_IN_CONTAINER {
@@ -48,16 +48,17 @@ body {
     backdrop-filter: blur(5px);
 }
 
+.cont {}
+
 .logo {
-    height: 610px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    height: 617.354px;
+    flex: 1 0 0;
+    aspect-ratio: 607.00/617.35;
+    object-fit: contain;
 
 
 }
+
 
 .container2 {
     display: flex;
@@ -81,31 +82,33 @@ body {
     color: #FFF;
     text-align: center;
     font-family: Inter;
-   
+
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
-.titulo2 {
-color: #FFF;
 
-text-align: center;
-font-family: Inter;
-font-style: normal;
-font-weight: 500;   
-line-height: normal;
+.titulo2 {
+    color: #FFF;
+
+    text-align: center;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
+
 .container_basic {
- display: flex;
-flex-direction: column;
-align-items: center;
-width: 195px;
- gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 195px;
+    gap: 5px;
 }
 
 
 .boton {
-display: flex;
+    display: flex;
     width: 171px;
     padding: 12px 24px;
     justify-content: center;
@@ -123,7 +126,7 @@ display: flex;
 
 
 .texto_boton {
-  color: #FFF;
+    color: #FFF;
     text-align: center;
     font-family: Inter;
     font-size: 12.677px;
@@ -131,35 +134,42 @@ display: flex;
     font-weight: 700;
     line-height: normal;
     text-decoration: none
-
 }
 
 .texto {
-color: #FFF;
+    color: #FFF;
 
-text-align: center;
-font-family: Inter;
-font-size:9px;
-font-style: normal;
-font-weight: 50;
-line-height: normal;
-}
-.footer {
-    background: rgba(178, 255, 234, 0.8);
-    padding: 16px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 50;
+    line-height: normal;
 }
 
-.footer-text {
-    color: #333;
-    font-size: 13px;
+.logo {
+    box-sizing: border-box;
+    flex: 1 1 0;
+    aspect-ratio: 607.00/617.35;
+    object-fit: contain;
+    width: 50vw;
+
+    max-width: 617px;
+    min-width: 300px;
+
+
+
+    transition: width 0.3s ease;
+
 }
 
-.footer-links {
-    display: flex;
-    gap: 20px;
+@media (max-width: 610px) {
+  .logo {
+    
+    width: 70vw;       /* más pequeño en proporción */
+    max-width: 200px;  /* tope inferior más chico */
+    min-width: 150px;
+     transition: width 0.3s ease;
+
+  }
 }
