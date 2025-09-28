@@ -2,27 +2,38 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link href="../css/servicios.css" rel="stylesheet" />
+    <link href="css/servicios.css" rel="stylesheet" />
 
-    <title>Document</title>
+    <title>ZonArte - Servicios</title>
 </head>
 
-
 <body>
-    <header>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+        </a>
 
-        <img src="../images/logo nombre trannparente.png" alt="logo." height="54" href="#" class="logo">
+        <!-- Barra de búsqueda centrada -->
+        <div class="search-center">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Buscar...">
+            </div>
+        </div>
 
-        <nav class="navigation-menu">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="acerca.html" class="nav-link">Acerca de mi</a>
-            <a href="servicios.html" class="nav-link">Servicios</a>
-            <a href="contacto.html" class="nav-link">Contacto</a>
+        <!-- Navegación a la derecha -->
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">Inicio</a>
+            <a href="acerca.html" class="nav-item">Acerca de mi</a>
+            <a href="servicios.html" class="nav-item active">Servicios</a>
+            <a href="social.html" class="nav-item">Social</a>
+            <a href="#contacto" class="nav-item">Contacto</a>
         </nav>
+        
         <div class="profile-btn">
-            <img src="../images/account_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png" alt="user." height="54">
+            <img src="images/Perfil.png" alt="Perfil" class="profile-img">
         </div>
     </header>
 
@@ -35,40 +46,40 @@
                     </div>
 
                     <div class="service-card">
-                        <div><span class="section-title">ASESORIA</span></div>
-                        <div><span class="service-description">AdemÃ¡s de mi trabajo como ilustrador y animador,
-                                tambiÃ©n ofrezco asesorÃ­as y cursos personalizados para quienes quieran mejorar sus
-                                habilidades en ilustracin, animaciÃ³n digital y programaciÃ³n creativa.</span></div>
+                        <div><span class="section-title">ASESORÍA</span></div>
+                        <div><span class="service-description">Además de mi trabajo como ilustrador y animador,
+                                también ofrezco asesorías y cursos personalizados para quienes quieran mejorar sus
+                                habilidades en ilustración, animación digital y programación creativa.</span></div>
                     </div>
 
                     <div class="service-card">
-                        <div><span class="section-title">ILUSTRACION DIGITAL</span></div>
-                        <div><span class="service-description">ilustraciones digitales creadas ajustadas a la
-                                necesidad del cliente con variedad de estilos y con diferentes usos, como: diseÃ±o de
-                                personaje, ilustracion para cuento, retrato entre otros</span></div>
+                        <div><span class="section-title">ILUSTRACIÓN DIGITAL</span></div>
+                        <div><span class="service-description">Ilustraciones digitales creadas ajustadas a la
+                                necesidad del cliente con variedad de estilos y con diferentes usos, como: diseño de
+                                personaje, ilustración para cuento, retrato entre otros</span></div>
                         <div class="gallery-container">
                             <div class="image-grid">
-                                <img src="../images/ART_1.png" alt="ART_1l." class="portfolio-image">
-                                <img src="../images/ART_2.png" alt="ART_2" class="portfolio-image">
-                                <img src="../images/ART_3.png" alt="ART_3" class="portfolio-image">
-                                <img src="../images/ART_4.png" alt="ART_4" class="portfolio-image">
+                                <img src="images/ART_1.png" alt="ART_1" class="portfolio-image">
+                                <img src="images/ART_2.png" alt="ART_2" class="portfolio-image">
+                                <img src="images/ART_3.png" alt="ART_3" class="portfolio-image">
+                                <img src="images/ART_4.png" alt="ART_4" class="portfolio-image">
                             </div>
                         </div>
                     </div>
 
                     <div class="service-card">
                         <div><span class="section-title">MURALISMO</span></div>
-                        <div><span class="service-description">servicio de diseño y pintado de mural tanto en
-                                interior como exterior siguiendo las necesidades de cuidado y duracion</span></div>
+                        <div><span class="service-description">Servicio de diseño y pintado de mural tanto en
+                                interior como exterior siguiendo las necesidades de cuidado y duración</span></div>
                         <div class="gallery-container">
-                            <img src="../images/ART_5.png" alt="ART_5" class="single-image">
+                            <img src="images/ART_5.png" alt="ART_5" class="single-image">
                         </div>
                     </div>
 
                     <div class="service-card">
                         <div><span class="section-title">PRECIOS / COMISIONES</span></div>
                         <div class="gallery-container">
-                            <img src="../images/COMISION.png" alt="COMISION" class="single-image">
+                            <img src="images/COMISION.png" alt="COMISION" class="single-image">
                         </div>
                     </div>
                 </div>
@@ -77,7 +88,7 @@
             <footer class="footer-section">
                 <div class="footer-content">
                     <div class="legal-info">
-                        <span>Informacion legal</span>
+                        <span>Información legal</span>
                     </div>
                 </div>
             </footer>
