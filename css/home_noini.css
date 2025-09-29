@@ -34,7 +34,7 @@ body {
 }
 
 .SIGN_IN_CONTAINER {
-    display: flex;
+    display: flex;    
     width: 800px;
     height: 610px;
     padding: 34px;

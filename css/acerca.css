@@ -310,7 +310,12 @@ body {
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
-
+.art-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+}
 /* Tablets grandes */
 @media screen and (max-width: 1200px) {
     .nav-menu {
