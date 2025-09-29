@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    overflow-x: hidden;
+
+}
+
+.main-content {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    padding: 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    align-self: stretch;
+}
+
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.SIGN_IN_CONTAINER {
+    display: flex;    
+    width: 800px;
+    height: 610px;
+    padding: 34px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.20);
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(5px);
+}
+
+.cont {}
+
+.logo {
+    height: 617.354px;
+    flex: 1 0 0;
+    aspect-ratio: 607.00/617.35;
+    object-fit: contain;
+
+
+}
+
+
+.container2 {
+    display: flex;
+    width: 800px;
+    height: 610px;
+    padding: 34px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    border-radius: 20px;
+
+    border: 2px solid rgba(255, 255, 255, 0.20);
+
+    background: rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(5px);
+}
+
+.titulo {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.titulo2 {
+    color: #FFF;
+
+    text-align: center;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.container_basic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 195px;
+    gap: 5px;
+}
+
+
+.boton {
+    display: flex;
+    width: 171px;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    background: #4ECDC4;
+    border: none;
+}
+
+.boton:hover {
+    background: #45b3ad;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.texto_boton {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12.677px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none
+}
+
+.texto {
+    color: #FFF;
+
+    text-align: center;
+    font-family: Inter;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 50;
+    line-height: normal;
+}
+
+.logo {
+    box-sizing: border-box;
+    flex: 1 1 0;
+    aspect-ratio: 607.00/617.35;
+    object-fit: contain;
+    width: 50vw;
+
+    max-width: 617px;
+    min-width: 300px;
+
+
+
+    transition: width 0.3s ease;
+
+}
+
+@media (max-width: 610px) {
+  .logo {
+    
+    width: 70vw;       /* más pequeño en proporción */
+    max-width: 200px;  /* tope inferior más chico */
+    min-width: 150px;
+     transition: width 0.3s ease;
+
+  }
+}

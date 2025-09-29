@@ -6,50 +6,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
     <link href="./css/contacto.css" rel="stylesheet" />
-    <title>contact</title>
+    <title>ZonArte - Contacto</title>
 </head>
 
 <body>
     <div class="container">
         <!-- Header -->
-        <header class="header">
+         <header class="header">
+            <a href="index.html" class="logo">
+                <img src="./images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+            </a>
 
-            <img src="../images/logo nombre trannparente.png" alt="logo." height="54" href="#" class="logo">
+            <!-- Barra de búsqueda centrada -->
+            <div class="search-center">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                </div>
+            </div>
 
+            <!-- Navegación a la derecha -->
             <nav class="nav-menu">
-                <a href="#" class="nav-item active">Inicio</a>
+                <a href="index.html" class="nav-item">Inicio</a>
                 <a href="acerca.html" class="nav-item">Acerca de mi</a>
                 <a href="servicios.html" class="nav-item">Servicios</a>
-                <a href="contacto.html" class="nav-item">Contacto</a>
+                <a href="social.html" class="nav-item">Social</a>
+                <a href="contacto.html" class="nav-item active">Contacto</a>
             </nav>
 
             <div class="profile-btn">
-                <img src="../images/account_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png" alt="user." height="54">
+                <img src="./images/Perfil.png" alt="Perfil" class="profile-img">
             </div>
-
         </header>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Portfolio Grid -->
-         
-
-            <!-- Mi Trabajo -->
-                   <section class="portfolio-section">
-            <section id="trabajo" class="info-section">
+            <section class="contact-section">
                 <h2 class="section-title">CONTACTO</h2>
-                <p class="section-text">
-                   ¿Tiene alguna pregunta? ¿Tiene algo más que decir? No dude en escribirnos 
-                   a Est.anderson.munoz@unimilitar.edu.co y nos pondremos en contacto con usted lo antes posible.
+                <p class="section-description">
+                    ¿Tienes algún proyecto en mente? ¡Me encantaría saber de ti! Completa el formulario o contáctame directamente por WhatsApp.
                 </p>
-                <section>
-                      <img src="../images/foto 2.png" alt="ART_1l." class="portfolio-image">
-                </section>
-            </section>
 
-        
+                <div class="contact-container">
+                    <!-- Formulario de contacto -->
+                    <div class="contact-form-container">
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="nombre">Nombre completo</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Correo electrónico</label>
+                                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="asunto">Asunto</label>
+                                <select id="asunto" name="asunto" required>
+                                    <option value="">Selecciona un asunto</option>
+                                    <option value="ilustracion">Ilustración</option>
+                                    <option value="animacion">Animación</option>
+                                    <option value="animacion">Pintura</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mensaje">Mensaje</label>
+                                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="submit" class="btn-primary">
+                                    <span>📧</span>
+                                    Enviar mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Panel de información y WhatsApp -->
+                    <div class="contact-info-panel">
+                        <div class="profile-section">
+                            <img src="./images/IMG_Acerca.png" alt="Perfil del artista" class="contact-profile-img">
+                            <h3>Anderson Muñoz</h3>
+                            <p class="contact-role">Artista Digital & Desarrollador</p>
+                        </div>
+
+                        <div class="contact-methods">
+                            <h4>Otras formas de contacto:</h4>
+                            
+                            <div class="contact-method">
+                                <span class="contact-icon">📧</span>
+                                <div class="contact-details">
+                                    <strong>Email</strong>
+                                    <span>Est.anderson.munoz@unimilitar.edu.co</span>
+                                </div>
+                            </div>
+
+                            <div class="whatsapp-section">
+                                <h4>¿Prefieres WhatsApp?</h4>
+                                <p>Contáctame directamente para una respuesta más rápida</p>
+                                
+                                <div class="whatsapp-buttons">
+                                    <button class="whatsapp-btn whatsapp-personal">
+                                        <span class="whatsapp-icon"></span>
+                                        <img src="./images/Whatsapp_icon.png" alt="Whatsapp" class="Whatsapp_Icon">
+                                        <div class="whatsapp-info">
+                                            <strong>WhatsApp Personal</strong>
+                                            <span>Para consultas generales</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="response-time">
+                            <h4>⏱️ Tiempo de respuesta</h4>
+                            <p>Normalmente respondo dentro de 24 horas</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
-</section>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-text">Información legal</div>
