@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="./css/perfil.css" rel="stylesheet" />
+    <title>ZonArte - Mi Perfil</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="./images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+        </a>
+
+        <!-- Barra de búsqueda centrada -->
+        <div class="search-center">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar...">
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-title">Amigos</div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">AC</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">Anderson Campos</div>
+                            <div class="suggestion-role">Diseñador Gráfico</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">MC</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">María Contreras</div>
+                            <div class="suggestion-role">Artista Digital</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación a la derecha -->
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">Inicio</a>
+            <a href="acerca.html" class="nav-item">Acerca de mi</a>
+            <a href="servicios.html" class="nav-item">Servicios</a>
+            <a href="social.html" class="nav-item">Social</a>
+            <a href="contacto.html" class="nav-item">Contacto</a>
+        </nav>
+
+        <a href="perfil.html" class="profile-btn">
+            <img src="./images/Perfil.png" alt="Perfil" class="profile-img">
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <a href="guardado.html" class="bookmark-btn" id="bookmarkBtn" title="Ver contenido guardado">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </a>
+            
+            <div class="profile-image-section">
+                <img src="./images/PFP.png" alt="Perfil" class="profile-image" id="profileImage">
+                <button class="edit-image-btn" onclick="changeProfileImage()">Cambiar</button>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name">ANDERSON MUÑOZ</h1>
+                <p class="profile-title">Ingeniero en Multimedia</p>
+                <p class="profile-location">Bogotá D.C., Colombia</p>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Conexiones</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">28</div>
+                        <div class="stat-label">Servicios</div>
+                    </div>
+                </div>
+                <button class="edit-profile-btn" onclick="openEditModal()">Editar Perfil</button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('biografia')">Biografía</button>
+                <button class="tab" onclick="showTab('galeria')">Galería</button>
+                <button class="tab" onclick="showTab('servicios')">Servicios</button>
+                <button class="tab" onclick="showTab('habilidades')">Habilidades</button>
+            </div>
+        </div>
+
+        <!-- Biography Section -->
+        <div id="biografia" class="content-section active">
+            <div class="bio-section">
+                <div class="section-title">
+                    Sobre mí
+                    <button class="edit-btn" onclick="editBio()">Editar</button>
+                </div>
+                <div id="bioText" class="bio-text">
+                    Soy un apasionado Ingeniero en Multimedia con más de 5 años de experiencia en diseño gráfico, desarrollo web y producción audiovisual. Me especializo en crear experiencias digitales innovadoras que combinan creatividad y tecnología. Mi objetivo es ayudar a marcas y emprendedores a contar sus historias de manera impactante y memorable.
+                </div>
+                <div id="bioEdit" style="display: none;">
+                    <textarea id="bioTextarea"></textarea>
+                    <button class="edit-btn" onclick="saveBio()">Guardar</button>
+                    <button class="edit-btn cancel-btn" onclick="cancelBio()">Cancelar</button>
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <div class="section-title">
+                    Experiencia
+                    <button class="edit-btn" onclick="editExperience()">Editar</button>
+                </div>
+                <div id="experienceText" class="bio-text">
+                    <strong>Diseñador Multimedia Senior</strong> - Creative Studio<br>
+                    2021 - Presente<br><br>
+                    <strong>Desarrollador Frontend</strong> - Tech Solutions<br>
+                    2019 - 2021<br><br>
+                    <strong>Diseñador Gráfico</strong> - Freelance<br>
+                    2018 - 2019
+                </div>
+                <div id="experienceEdit" style="display: none;">
+                    <textarea id="experienceTextarea"></textarea>
+                    <button class="edit-btn" onclick="saveExperience()">Guardar</button>
+                    <button class="edit-btn cancel-btn" onclick="cancelExperience()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div id="galeria" class="content-section">
+            <div class="bio-section">
+                <div class="section-title">
+                    Mi Galería
+                    <button class="edit-btn" onclick="toggleGalleryEdit()">Editar</button>
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-item">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #4ecdc4, #667eea);"></div>
+                        <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">×</button>
+                        <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
+                    </div>
+                    <div class="gallery-item">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                        <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">×</button>
+                        <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
+                    </div>
+                    <div class="gallery-item">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #fa709a, #fee140);"></div>
+                        <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">Editar</button>
+                        <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
+                    </div>
+                    <div class="gallery-item add-image-btn" onclick="addImage()">
+                        +
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div id="servicios" class="content-section">
+            <div class="bio-section">
+                <div class="section-title">
+                    Mis Servicios
+                    <button class="edit-btn" onclick="toggleServicesEdit()">Editar</button>
+                </div>
+                <div class="services-grid" id="servicesGrid">
+                    <div class="service-card">
+                        <div class="service-icon">Diseño</div>
+                        <h3 class="service-name">Diseño Gráfico</h3>
+                        <p class="service-description">Creación de identidad visual, logos, branding y material publicitario.</p>
+                        <div class="service-price">Desde $50.000</div>
+                        <button class="delete-service-btn services-delete-mode" onclick="deleteService(this)">×</button>
+                        <button class="edit-service-btn services-delete-mode" onclick="editService(this)">Editar</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">Web</div>
+                        <h3 class="service-name">Desarrollo Web</h3>
+                        <p class="service-description">Sitios web responsivos, landing pages y aplicaciones web modernas.</p>
+                        <div class="service-price">Desde $200.000</div>
+                        <button class="delete-service-btn services-delete-mode" onclick="deleteService(this)">×</button>
+                        <button class="edit-service-btn services-delete-mode" onclick="editService(this)">Editar</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">Video</div>
+                        <h3 class="service-name">Edición de Video</h3>
+                        <p class="service-description">Post-producción, efectos visuales y motion graphics profesionales.</p>
+                        <div class="service-price">Desde $80.000</div>
+                        <button class="delete-service-btn services-delete-mode" onclick="deleteService(this)">×</button>
+                        <button class="edit-service-btn services-delete-mode" onclick="editService(this)">Editar</button>
+                    </div>
+                    <div class="service-card add-service-btn" onclick="openServiceModal()">
+                        +
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="habilidades" class="content-section">
+            <div class="bio-section">
+                <div class="section-title">
+                    Habilidades
+                    <button class="edit-btn" onclick="editSkills()">Editar</button>
+                </div>
+                <div id="skillsText" class="bio-text">
+                    <strong>Diseño:</strong> Adobe Photoshop, Illustrator, InDesign, Figma<br><br>
+                    <strong>Desarrollo:</strong> HTML, CSS, JavaScript, React, Node.js<br><br>
+                    <strong>Video:</strong> Adobe Premiere, After Effects, DaVinci Resolve<br><br>
+                    <strong>3D:</strong> Blender, Cinema 4D<br><br>
+                    <strong>Idiomas:</strong> Español (Nativo), Inglés (Avanzado)
+                </div>
+                <div id="skillsEdit" style="display: none;">
+                    <textarea id="skillsTextarea"></textarea>
+                    <button class="edit-btn" onclick="saveSkills()">Guardar</button>
+                    <button class="edit-btn cancel-btn" onclick="cancelSkills()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Profile -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Editar Perfil</h2>
+                <button class="close-modal" onclick="closeEditModal()">×</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Nombre Completo</label>
+                <input type="text" class="form-input" value="ANDERSON MUÑOZ">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Título Profesional</label>
+                <input type="text" class="form-input" value="Ingeniero en Multimedia">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Ubicación</label>
+                <input type="text" class="form-input" value="Bogotá D.C., Colombia">
+            </div>
+            <button class="submit-btn" onclick="saveProfile()">Guardar Cambios</button>
+        </div>
+    </div>
+
+    <!-- Modal Add Service -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="serviceModalTitle">Agregar Servicio</h2>
+                <button class="close-modal" onclick="closeServiceModal()">×</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Nombre del Servicio</label>
+                <input type="text" id="serviceName" class="form-input" placeholder="Ej: Fotografía de Producto">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Descripción</label>
+                <textarea id="serviceDescription" class="form-input" rows="4" placeholder="Describe tu servicio..."></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Precio</label>
+                <input type="text" id="servicePrice" class="form-input" placeholder="Ej: $100.000">
+            </div>
+            <button class="submit-btn" onclick="addService()">Agregar Servicio</button>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown search functionality
+        const searchInput = document.getElementById('searchInput');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        searchInput.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('.suggestion-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const name = this.querySelector('.suggestion-name').textContent;
+                searchInput.value = name;
+                dropdownMenu.classList.remove('active');
+            });
+        });
+
+        // Tab Navigation
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const sections = document.querySelectorAll('.content-section');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            sections.forEach(section => section.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // Biography Edit
+        let originalBio = '';
+        
+        function editBio() {
+            const bioText = document.getElementById('bioText');
+            const bioEdit = document.getElementById('bioEdit');
+            const textarea = document.getElementById('bioTextarea');
+            
+            originalBio = bioText.textContent.trim();
+            textarea.value = originalBio;
+            
+            bioText.style.display = 'none';
+            bioEdit.style.display = 'block';
+        }
+
+        function saveBio() {
+            const bioText = document.getElementById('bioText');
+            const bioEdit = document.getElementById('bioEdit');
+            const textarea = document.getElementById('bioTextarea');
+            
+            bioText.textContent = textarea.value;
+            bioText.style.display = 'block';
+            bioEdit.style.display = 'none';
+        }
+
+        function cancelBio() {
+            const bioText = document.getElementById('bioText');
+            const bioEdit = document.getElementById('bioEdit');
+            
+            bioText.style.display = 'block';
+            bioEdit.style.display = 'none';
+        }
+
+        // Experience Edit
+        let originalExperience = '';
+        
+        function editExperience() {
+            const experienceText = document.getElementById('experienceText');
+            const experienceEdit = document.getElementById('experienceEdit');
+            const textarea = document.getElementById('experienceTextarea');
+            
+            originalExperience = experienceText.innerHTML;
+            textarea.value = experienceText.innerText.trim();
+            
+            experienceText.style.display = 'none';
+            experienceEdit.style.display = 'block';
+        }
+
+        function saveExperience() {
+            const experienceText = document.getElementById('experienceText');
+            const experienceEdit = document.getElementById('experienceEdit');
+            const textarea = document.getElementById('experienceTextarea');
+            
+            experienceText.innerText = textarea.value;
+            experienceText.style.display = 'block';
+            experienceEdit.style.display = 'none';
+        }
+
+        function cancelExperience() {
+            const experienceText = document.getElementById('experienceText');
+            const experienceEdit = document.getElementById('experienceEdit');
+            
+            experienceText.style.display = 'block';
+            experienceEdit.style.display = 'none';
+        }
+
+        // Skills Edit
+        let originalSkills = '';
+        
+        function editSkills() {
+            const skillsText = document.getElementById('skillsText');
+            const skillsEdit = document.getElementById('skillsEdit');
+            const textarea = document.getElementById('skillsTextarea');
+            
+            originalSkills = skillsText.innerHTML;
+            textarea.value = skillsText.innerText.trim();
+            
+            skillsText.style.display = 'none';
+            skillsEdit.style.display = 'block';
+        }
+
+        function saveSkills() {
+            const skillsText = document.getElementById('skillsText');
+            const skillsEdit = document.getElementById('skillsEdit');
+            const textarea = document.getElementById('skillsTextarea');
+            
+            skillsText.innerText = textarea.value;
+            skillsText.style.display = 'block';
+            skillsEdit.style.display = 'none';
+        }
+
+        function cancelSkills() {
+            const skillsText = document.getElementById('skillsText');
+            const skillsEdit = document.getElementById('skillsEdit');
+            
+            skillsText.style.display = 'block';
+            skillsEdit.style.display = 'none';
+        }
+
+        // Profile Image
+        function changeProfileImage() {
+            alert('Función para cambiar imagen de perfil. Aquí se abriría un selector de archivos.');
+        }
+
+        // Gallery Edit Mode
+        let galleryEditMode = false;
+        
+        function toggleGalleryEdit() {
+            galleryEditMode = !galleryEditMode;
+            const deleteButtons = document.querySelectorAll('.gallery-delete-mode');
+            
+            deleteButtons.forEach(btn => {
+                if (galleryEditMode) {
+                    btn.style.opacity = '1';
+                } else {
+                    btn.style.opacity = '0';
+                }
+            });
+            
+            event.target.textContent = galleryEditMode ? 'Finalizar' : 'Editar';
+        }
+
+        // Gallery Functions
+        function addImage() {
+            const gallery = document.getElementById('galleryGrid');
+            const addBtn = gallery.querySelector('.add-image-btn');
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'gallery-item';
+            newItem.innerHTML = `
+                <div style="width: 100%; height: 100%; background: linear-gradient(${Math.random() * 360}deg, #4ecdc4, #667eea);"></div>
+                <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)" style="opacity: ${galleryEditMode ? '1' : '0'}">×</button>
+                <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)" style="opacity: ${galleryEditMode ? '1' : '0'}">Editar</button>
+            `;
+            
+            gallery.insertBefore(newItem, addBtn);
+        }
+
+        function deleteImage(btn) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta imagen?')) {
+                btn.parentElement.remove();
+            }
+        }
+
+        function editGalleryImage(btn) {
+            alert('Función para editar imagen. Aquí se abriría un selector de archivos.');
+        }
+
+        // Services Edit Mode
+        let servicesEditMode = false;
+        let editingServiceCard = null;
+        
+        function toggleServicesEdit() {
+            servicesEditMode = !servicesEditMode;
+            const buttons = document.querySelectorAll('.services-delete-mode');
+            
+            buttons.forEach(btn => {
+                if (servicesEditMode) {
+                    btn.style.opacity = '1';
+                } else {
+                    btn.style.opacity = '0';
+                }
+            });
+            
+            event.target.textContent = servicesEditMode ? 'Finalizar' : 'Editar';
+        }
+
+        function deleteService(btn) {
+            if (confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
+                btn.parentElement.remove();
+            }
+        }
+
+        function editService(btn) {
+            editingServiceCard = btn.parentElement;
+            const name = editingServiceCard.querySelector('.service-name').textContent;
+            const description = editingServiceCard.querySelector('.service-description').textContent;
+            const price = editingServiceCard.querySelector('.service-price').textContent;
+            
+            document.getElementById('serviceName').value = name;
+            document.getElementById('serviceDescription').value = description;
+            document.getElementById('servicePrice').value = price;
+            document.getElementById('serviceModalTitle').textContent = 'Editar Servicio';
+            document.querySelector('#serviceModal .submit-btn').textContent = 'Guardar Cambios';
+            
+            openServiceModal();
+        }
+
+        // Modal Functions
+        function openEditModal() {
+            document.getElementById('editModal').classList.add('active');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('active');
+        }
+
+        function saveProfile() {
+            alert('Perfil actualizado exitosamente!');
+            closeEditModal();
+        }
+
+        function openServiceModal() {
+            document.getElementById('serviceModal').classList.add('active');
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('active');
+            editingServiceCard = null;
+            document.getElementById('serviceName').value = '';
+            document.getElementById('serviceDescription').value = '';
+            document.getElementById('servicePrice').value = '';
+            document.getElementById('serviceModalTitle').textContent = 'Agregar Servicio';
+            document.querySelector('#serviceModal .submit-btn').textContent = 'Agregar Servicio';
+        }
+
+        function addService() {
+            const name = document.getElementById('serviceName').value;
+            const description = document.getElementById('serviceDescription').value;
+            const price = document.getElementById('servicePrice').value;
+            
+            if (!name || !description || !price) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+            
+            if (editingServiceCard) {
+                // Editar servicio existente
+                editingServiceCard.querySelector('.service-name').textContent = name;
+                editingServiceCard.querySelector('.service-description').textContent = description;
+                editingServiceCard.querySelector('.service-price').textContent = price;
+                alert('Servicio actualizado exitosamente!');
+            } else {
+                // Agregar nuevo servicio
+                const servicesGrid = document.getElementById('servicesGrid');
+                const addBtn = servicesGrid.querySelector('.add-service-btn');
+                
+                const newService = document.createElement('div');
+                newService.className = 'service-card';
+                newService.innerHTML = `
+                    <div class="service-icon">Nuevo</div>
+                    <h3 class="service-name">${name}</h3>
+                    <p class="service-description">${description}</p>
+                    <div class="service-price">${price}</div>
+                    <button class="delete-service-btn services-delete-mode" onclick="deleteService(this)" style="opacity: ${servicesEditMode ? '1' : '0'}">×</button>
+                    <button class="edit-service-btn services-delete-mode" onclick="editService(this)" style="opacity: ${servicesEditMode ? '1' : '0'}">Editar</button>
+                `;
+                
+                servicesGrid.insertBefore(newService, addBtn);
+                alert('Servicio agregado exitosamente!');
+            }
+            
+            closeServiceModal();
+        }
+
+        // Close modals on outside click
+        window.onclick = function(event) {
+            const editModal = document.getElementById('editModal');
+            const serviceModal = document.getElementById('serviceModal');
+            
+            if (event.target === editModal) {
+                closeEditModal();
+            }
+            if (event.target === serviceModal) {
+                closeServiceModal();
+            }
+        }
+    </script>
+</body>
+</html>
