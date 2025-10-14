@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/sign_up.css">
+    <title>Sign Up - ZonArte</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">ÚNETE A ZONARTE</h1>
+            
+            <form id="signUpForm" onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label class="label">Nombre Completo</label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        class="input-field" 
+                        placeholder="Tu nombre completo" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Correo</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="input-field" 
+                        placeholder="tu@email.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="input-field" 
+                        placeholder="Crea una contraseña segura" 
+                        required
+                        minlength="6"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Confirmar Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        class="input-field" 
+                        placeholder="Confirma tu contraseña" 
+                        required
+                    >
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+                <div id="successMessage" class="success-message"></div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-signup">Registrarse</button>
+                    <button type="reset" class="btn btn-clear">Limpiar</button>
+                </div>
+
+                <div class="login-link">
+                    <p>¿Ya tienes cuenta? <a href="sign_in.html">Inicia Sesión</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script >
+        function handleSignUp(event) {
+    event.preventDefault();
+    
+    // Obtener los valores del formulario
+    const fullname = document.getElementById('fullname').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
+    
+    // Limpiar mensajes previos
+    errorMessage.classList.remove('show');
+    successMessage.classList.remove('show');
+    
+    // Validar que las contraseñas coincidan
+    if (password !== confirmPassword) {
+        errorMessage.textContent = 'Las contraseñas no coinciden';
+        errorMessage.classList.add('show');
+        return;
+    }
+    
+    // Validar longitud de contraseña
+    if (password.length < 6) {
+        errorMessage.textContent = 'La contraseña debe tener al menos 6 caracteres';
+        errorMessage.classList.add('show');
+        return;
+    }
+    
+    // Validación básica
+    if (fullname && email && password) {
+        // Aquí podrías agregar lógica para guardar el usuario
+        // Por ahora, simulamos un registro exitoso
+        
+        successMessage.textContent = '¡Registro exitoso! Redirigiendo...';
+        successMessage.classList.add('show');
+        
+        // Redirigir a la página de inicio de sesión después de 2 segundos
+        setTimeout(() => {
+            window.location.href = 'sign_in.html';
+        }, 2000);
+    } else {
+        errorMessage.textContent = 'Por favor, completa todos los campos';
+        errorMessage.classList.add('show');
+    }
+}
+    </script>
+</body>
+</html>

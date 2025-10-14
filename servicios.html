@@ -17,11 +17,49 @@
         </a>
 
         <!-- Barra de búsqueda centrada -->
-        <div class="search-center">
-            <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Buscar...">
+       <div class="search-center">
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-title">Amigos</div>
+            <div class="suggestion-item">
+                <div class="suggestion-avatar">AC</div>
+                <div class="suggestion-info">
+                    <div class="suggestion-name">Anderson Campos</div>
+                    <div class="suggestion-role">Diseñador Gráfico</div>
+                </div>
+                <div class="suggestion-action">+</div>
+            </div>
+            <div class="suggestion-item">
+                <div class="suggestion-avatar">MC</div>
+                <div class="suggestion-info">
+                    <div class="suggestion-name">María Contreras</div>
+                    <div class="suggestion-role">Artista Digital</div>
+                </div>
+                <div class="suggestion-action">+</div>
+            </div>
+            <div class="dropdown-title">Personas</div>
+            <div class="suggestion-item">
+                <div class="suggestion-avatar">JR</div>
+                <div class="suggestion-info">
+                    <div class="suggestion-name">Juan Rodriguez</div>
+                    <div class="suggestion-role">Ilustrador</div>
+                </div>
+                <div class="suggestion-action">+</div>
+            </div>
+            <div class="suggestion-item">
+                <div class="suggestion-avatar">SP</div>
+                <div class="suggestion-info">
+                    <div class="suggestion-name">Sofia Pereira</div>
+                    <div class="suggestion-role">Fotógrafa</div>
+                </div>
+                <div class="suggestion-action">+</div>
             </div>
         </div>
+    </div>
+</div>
 
         <!-- Navegación a la derecha -->
         <nav class="nav-menu">
@@ -94,6 +132,31 @@
             </footer>
         </div>
     </main>
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // Abrir/cerrar dropdown al hacer click en el input
+    searchInput.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('active');
+    });
+
+    // Cerrar dropdown al clickar fuera
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container')) {
+            dropdownMenu.classList.remove('active');
+        }
+    });
+
+    // Cerrar dropdown cuando se selecciona una sugerencia
+    document.querySelectorAll('.suggestion-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const name = this.querySelector('.suggestion-name').textContent;
+            searchInput.value = name;
+            dropdownMenu.classList.remove('active');
+        });
+    });
+</script>
 
 </body>
 
