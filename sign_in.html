@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="./css/sign_in.css" rel="stylesheet" />
+    <title>Sign In - ZonArte</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">BIENVENIDO A ZONARTE</h1>
+            
+            <form id="signInForm" onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label class="label">Correo</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="input-field" 
+                        placeholder="tu@email.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="input-field" 
+                        placeholder="Ingresa tu contraseña" 
+                        required
+                    >
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-signin">Sign In</button>
+                    <button type="reset" class="btn btn-clear">Limpiar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function handleSignIn(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+    
+    // Obtener los valores del formulario
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('errorMessage');
+    
+    // Validación básica
+    if (email && password) {
+        // Aquí podrías agregar validación adicional si lo necesitas
+        // Por ejemplo, verificar contra una base de datos o credenciales específicas
+        
+        // Redirigir a index.html
+        window.location.href = 'index.html';
+    } else {
+        // Mostrar mensaje de error
+        errorMessage.textContent = 'Por favor, completa todos los campos';
+        errorMessage.classList.add('show');
+        
+        // Ocultar el mensaje después de 3 segundos
+        setTimeout(() => {
+            errorMessage.classList.remove('show');
+        }, 3000);
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="./css/guardado.css" rel="stylesheet" />
+    <title>ZonArte - Contenido Guardado</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1 class="page-title">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                </svg>
+                Contenido Guardado
+            </h1>
+            <a href="perfil.html" class="back-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Volver al Perfil
+            </a>
+        </div>
+
+        <!-- Saved Content Grid -->
+        <div class="saved-grid" id="savedGrid">
+            <!-- Card 1 -->
+            <div class="saved-card">
+                <div class="card-image" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Branding Corporativo Moderno</h3>
+                    <div class="card-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <div class="author-name">María Contreras</div>
+                            <div class="author-role">Diseñadora Gráfica</div>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Sistema completo de identidad visual para empresa tecnológica incluyendo logo, paleta de colores y guías de estilo.
+                    </p>
+                    <div class="card-footer">
+                        <span class="card-date">Guardado hace 2 días</span>
+                        <button class="remove-btn" onclick="removeCard(this)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="saved-card">
+                <div class="card-image" style="background: linear-gradient(135deg, #4ecdc4, #556270);"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Landing Page Interactiva</h3>
+                    <div class="card-author">
+                        <div class="author-avatar">AC</div>
+                        <div class="author-info">
+                            <div class="author-name">Anderson Campos</div>
+                            <div class="author-role">Desarrollador Frontend</div>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Página de aterrizaje con animaciones fluidas y diseño responsivo para startup de tecnología educativa.
+                    </p>
+                    <div class="card-footer">
+                        <span class="card-date">Guardado hace 5 días</span>
+                        <button class="remove-btn" onclick="removeCard(this)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="saved-card">
+                <div class="card-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Motion Graphics Publicitario</h3>
+                    <div class="card-author">
+                        <div class="author-avatar">LP</div>
+                        <div class="author-info">
+                            <div class="author-name">Luis Pérez</div>
+                            <div class="author-role">Motion Designer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Video promocional con efectos visuales impactantes y animaciones 2D para campaña de marketing digital.
+                    </p>
+                    <div class="card-footer">
+                        <span class="card-date">Guardado hace 1 semana</span>
+                        <button class="remove-btn" onclick="removeCard(this)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="saved-card">
+                <div class="card-image" style="background: linear-gradient(135deg, #fa709a, #fee140);"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Modelado 3D de Producto</h3>
+                    <div class="card-author">
+                        <div class="author-avatar">SC</div>
+                        <div class="author-info">
+                            <div class="author-name">Sofía Castro</div>
+                            <div class="author-role">Artista 3D</div>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Renderizado fotorrealista de producto para catálogo digital con iluminación profesional y texturas detalladas.
+                    </p>
+                    <div class="card-footer">
+                        <span class="card-date">Guardado hace 2 semanas</span>
+                        <button class="remove-btn" onclick="removeCard(this)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="saved-card">
+                <div class="card-image" style="background: linear-gradient(135deg, #30cfd0, #330867);"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Diseño UI/UX para App Móvil</h3>
+                    <div class="card-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <div class="author-name">Jorge Ramírez</div>
+                            <div class="author-role">UI/UX Designer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Interfaz moderna e intuitiva para aplicación de delivery con enfoque en experiencia de usuario y usabilidad.
+                    </p>
+                    <div class="card-footer">
+                        <span class="card-date">Guardado hace 3 días</span>
+                        <button class="remove-btn" onclick="removeCard(this)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="saved-card">
+                <div class="card-image" style="background: linear-gradient(135deg, #a8edea, #fed6e3);"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Dashboard Administrativo</h3>
+                    <div class="card-author">
+                        <div class="author-avatar">DM</div>
+                        <div class="author-info">
+                            <div class="author-name">Diana Martínez</div>
+                            <div class="author-role">Full Stack Developer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Panel de administración con gráficos interactivos y gestión de datos en tiempo real para plataforma e-commerce.
+                    </p>
+                    <div class="card-footer">
+                        <span class="card-date">Guardado hace 4 días</span>
+                        <button class="remove-btn" onclick="removeCard(this)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State (hidden by default) -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">📋</div>
+            <h2 class="empty-title">No tienes contenido guardado</h2>
+            <p class="empty-text">Explora y guarda los proyectos que te inspiren</p>
+        </div>
+    </div>
+
+    <script>
+        // Remove card functionality
+        function removeCard(btn) {
+            if (confirm('¿Estás seguro de que quieres eliminar este contenido guardado?')) {
+                const card = btn.closest('.saved-card');
+                card.style.animation = 'fadeOut 0.3s ease';
+                
+                setTimeout(() => {
+                    card.remove();
+                    
+                    // Check if there are any cards left
+                    const remainingCards = document.querySelectorAll('.saved-card');
+                    if (remainingCards.length === 0) {
+                        document.getElementById('savedGrid').style.display = 'none';
+                        document.getElementById('emptyState').style.display = 'block';
+                    }
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
