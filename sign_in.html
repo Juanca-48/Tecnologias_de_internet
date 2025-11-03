@@ -18,18 +18,18 @@
                         type="email" 
                         id="email" 
                         class="input-field" 
-                        placeholder="tu@email.com" 
+                        placeholder="Ingresa aquí tu email" 
                         required
                     >
                 </div>
 
                 <div class="form-group">
-                    <label class="label">Contraseña</label>
+                    <label class="label">Contrasena</label>
                     <input 
                         type="password" 
                         id="password" 
                         class="input-field" 
-                        placeholder="Ingresa tu contraseña" 
+                        placeholder="Ingresa tu contrasena" 
                         required
                     >
                 </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <script>
-        function handleSignIn(event) {
+        async function handleSignIn(event) {
     event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
     
     // Obtener los valores del formulario
@@ -52,22 +52,37 @@
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('errorMessage');
     
+    errorMessage.classList.remove('show');
+
     // Validación básica
-    if (email && password) {
-        // Aquí podrías agregar validación adicional si lo necesitas
-        // Por ejemplo, verificar contra una base de datos o credenciales específicas
-        
-        // Redirigir a index.html
-        window.location.href = 'index.html';
-    } else {
-        // Mostrar mensaje de error
-        errorMessage.textContent = 'Por favor, completa todos los campos';
+
+    if (!email || !password) {
+        errorMessage.textContent = 'Por favor, completa todos los campos.';
         errorMessage.classList.add('show');
-        
-        // Ocultar el mensaje después de 3 segundos
-        setTimeout(() => {
-            errorMessage.classList.remove('show');
-        }, 3000);
+        return;
+    }
+    try {
+        const response = await fetch('php/login_usuario.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            // Inicio de sesión exitoso
+            alert(result.message);
+            window.location.href = 'index.html'; // Página principal después del login
+        } else {
+            // Error en las credenciales
+            errorMessage.textContent = result.message;
+            errorMessage.classList.add('show');
+        }
+    } catch (error) {
+        console.error(error);
+        errorMessage.textContent = 'Error al conectar con el servidor.';
+        errorMessage.classList.add('show');
     }
 }
     </script>

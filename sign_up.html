@@ -15,12 +15,23 @@
             
             <form id="signUpForm" onsubmit="handleSignUp(event)">
                 <div class="form-group">
-                    <label class="label">Nombre Completo</label>
+                    <label class="label">Nombres</label>
                     <input 
                         type="text" 
-                        id="fullname" 
+                        id="name" 
                         class="input-field" 
-                        placeholder="Tu nombre completo" 
+                        placeholder="Ingresa aquí tu nombre" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Apellidos</label>
+                    <input 
+                        type="text" 
+                        id="lastname" 
+                        class="input-field" 
+                        placeholder="Ingresa aquí tus apellidos" 
                         required
                     >
                 </div>
@@ -31,7 +42,18 @@
                         type="email" 
                         id="email" 
                         class="input-field" 
-                        placeholder="tu@email.com" 
+                        placeholder="Ingresa aquí tu email" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Usuario</label>
+                    <input 
+                        type="text" 
+                        id="user" 
+                        class="input-field" 
+                        placeholder="Ingresa aquí un nombre de usuario" 
                         required
                     >
                 </div>
@@ -59,6 +81,39 @@
                     >
                 </div>
 
+                <div class="form-group">
+                    <label class="label">Fecha de nacimiento</label>
+                    <input 
+                        type="date" 
+                        id="bornDate" 
+                        class="input-field" 
+                        placeholder="01/01/1999" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Pais</label>
+                    <input 
+                        type="text" 
+                        id="country" 
+                        class="input-field" 
+                        placeholder="Ingresa tu pais de residencia" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Telefono</label>
+                    <input 
+                        type="varchar" 
+                        id="phoneNumber" 
+                        class="input-field" 
+                        placeholder="Ingresa tu número de telefono" 
+                        required
+                    >
+                </div>
+
                 <div id="errorMessage" class="error-message"></div>
                 <div id="successMessage" class="success-message"></div>
 
@@ -75,14 +130,19 @@
     </div>
 
     <script >
-        function handleSignUp(event) {
+        async function handleSignUp(event) {
     event.preventDefault();
     
     // Obtener los valores del formulario
-    const fullname = document.getElementById('fullname').value;
+    const name = document.getElementById('name').value;
+    const lastname = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
+    const user = document.getElementById('user').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
+    const bornDate = document.getElementById('bornDate').value;
+    const country = document.getElementById('country').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
     const errorMessage = document.getElementById('errorMessage');
     const successMessage = document.getElementById('successMessage');
     
@@ -104,21 +164,41 @@
         return;
     }
     
-    // Validación básica
-    if (fullname && email && password) {
-        // Aquí podrías agregar lógica para guardar el usuario
-        // Por ahora, simulamos un registro exitoso
-        
-        successMessage.textContent = '¡Registro exitoso! Redirigiendo...';
-        successMessage.classList.add('show');
-        
-        // Redirigir a la página de inicio de sesión después de 2 segundos
-        setTimeout(() => {
-            window.location.href = 'sign_in.html';
-        }, 2000);
-    } else {
-        errorMessage.textContent = 'Por favor, completa todos los campos';
+    // Enviar los datos al backend PHP usando fetch()
+    try {
+        const response = await fetch('php/registrar_usuario.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name,
+                lastname,
+                email,
+                user,
+                password,
+                bornDate,
+                country,
+                phoneNumber
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            successMessage.textContent = result.message;
+            successMessage.classList.add('show');
+
+            setTimeout(() => {
+                window.location.href = 'sign_in.html';
+            }, 2000);
+        } else {
+            errorMessage.textContent = result.message;
+            errorMessage.classList.add('show');
+        }
+
+    } catch (error) {
+        errorMessage.textContent = 'Error al conectar con el servidor.';
         errorMessage.classList.add('show');
+        console.error(error);
     }
 }
     </script>
