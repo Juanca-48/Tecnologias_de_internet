@@ -166,7 +166,7 @@
     
     // Enviar los datos al backend PHP usando fetch()
     try {
-        const response = await fetch('php/registrar_usuario.php', {
+        const response = await fetch('./php/registrar_usuario.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

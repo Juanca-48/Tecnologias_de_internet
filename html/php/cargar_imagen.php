@@ -1,0 +1,56 @@
+<?php
+session_start();
+require_once "conexion.php";
+header("Content-Type: application/json");
+
+if ($conn->connect_error) {
+    die("Error en la conexión: " . $conn->connect_error);
+}
+
+if (!isset($_SESSION['usuario_correo'])) {
+    die("Error: No hay sesión iniciada.");
+}
+
+// Ruta donde se va a guardar la imagen final
+$destino = "../../images/";
+
+if (!isset($_FILES['profileImage'])) {
+    echo "No se recibió ninguna imagen";
+    exit;
+}
+
+$file = $_FILES['profileImage'];
+$originalName = basename($file["name"]);
+$tmp = $file["tmp_name"];
+
+// Validar que sea realmente una imagen
+$info = getimagesize($tmp);
+if ($info === false) {
+    echo "El archivo no es una imagen válida";
+    exit;
+}
+
+// Verificar permisos de escritura
+if (!is_writable(dirname($destino))) {
+    echo "Error: la carpeta images/ no permite escritura";
+    exit;
+}
+
+// Crear ruta completa
+$destino = $destino . $originalName;
+
+// Guardar la nueva imagen
+if (move_uploaded_file($tmp, $destino)) {
+
+    $usuario = $_SESSION['usuario_correo'];
+    $query = $conn->prepare("UPDATE imagenes SET Perfil = ? WHERE Correo = ?");
+    $query->bind_param("ss", $originalName, $usuario);
+    $query->execute();
+    $_SESSION["usuario_foto"] = $originalName;
+
+    echo "Imagen de perfil actualizada correctamente";
+} else {
+    echo "Error al guardar la imagen";
+}
+
+?>

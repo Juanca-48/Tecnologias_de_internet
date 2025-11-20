@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-// Configurar conexión a la base de datos
+// Conexión a la base de datos
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -26,7 +26,7 @@ $fecha = $data["bornDate"];
 $pais = $data["country"];
 $telefono = $data["phoneNumber"];
 
-// 🔍 Verificar si el correo ya existe
+// Verificar si el correo ya existe
 $check = $conn->prepare("SELECT correo FROM usuarios WHERE correo = ?");
 $check->bind_param("s", $correo);
 $check->execute();
@@ -42,16 +42,22 @@ if ($check->num_rows > 0) {
 $check->close();
 
 // Insertar nuevo registro
-$stmt = $conn->prepare("INSERT INTO usuarios (Correo, Nombres, Apellidos, Nombre_usuario, Contraseña, Fecha_nacimiento, Pais, Telefono)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssss", $correo, $nombre, $apellido, $usuario, $contraseña, $fecha, $pais, $telefono);
 
-if ($stmt->execute()) {
-    echo json_encode(["success" => true, "message" => "Usuario registrado exitosamente."]);
-} else {
-    echo json_encode(["success" => false, "message" => "Error al registrar: " . $stmt->error]);
+$stmt1 = $conn->prepare("INSERT INTO usuarios (Correo, Nombres, Apellidos, Nombre_usuario, Contraseña, Fecha_nacimiento, Pais, Telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt1->bind_param("ssssssss", $correo, $nombre, $apellido, $usuario, $contraseña, $fecha, $pais, $telefono);
+
+if (!$stmt1->execute()) {
+    echo json_encode(["success" => false, "message" => "Error al registrar usuario: " . $stmt1->error]);
+    exit;
 }
+$stmt1->close();
 
-$stmt->close();
+$stmt2 = $conn->prepare("INSERT INTO imagenes (Correo) VALUES (?)");
+$stmt2->bind_param("s", $correo);
+$stmt2->execute();
+$stmt2->close();
+
+echo json_encode(["success" => true, "message" => "Usuario registrado exitosamente."]);
+
 $conn->close();
 ?>

@@ -58,7 +58,18 @@
 </div>
 
     </header>
-
+    <script>
+    fetch("php/get_session.php")    
+        .then(r => r.json())
+        .then(data => {
+            if (data.logged) {
+                document.getElementById("profileImage").src = "../images/" + data.foto;
+            } else {
+                // opcional: redirigir a login
+                window.location.href = "login.html";
+            }
+        });
+    </script>
     <!-- Main Content -->
     <div class="profile-container">
         <!-- Profile Header -->
@@ -68,9 +79,8 @@
                     <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                 </svg>
             </a>
-            
             <div class="profile-image-section">
-                <img src="../images/PFP.png" alt="Perfil" class="profile-image" id="profileImage">
+                <img src="../images/" + data.foto alt="Perfil" class="profile-image" id="profileImage">
                 <button class="edit-image-btn" onclick="changeProfileImage()">Cambiar</button>
                 <input type="file" id="profileInput" accept="image/*" style="display:none">
 
@@ -417,30 +427,59 @@
             skillsEdit.style.display = 'none';
         }
 
-        // Profile Image
+//        // Profile Image
+//        function changeProfileImage() {
+//            document.getElementById('profileInput').click();
+//        }
+//            document.getElementById('profileInput').addEventListener('change', function() {
+//             const file = this.files[0];
+//             if (!file) return;
+//
+//            const formData = new FormData();
+//             formData.append('profile_pic', file);
+//
+//             fetch("upload_profile.php", {
+//        method: "POST",
+//        body: formData
+//         })
+//    .then(res => res.json())
+//    .then(data => {
+//        if (data.success) {
+//            document.getElementById('profileImage').src = data.newPath;
+//         } else {
+//            alert("Error: " + data.message);
+//         }
+//         });
+//        });
+
+        // Cambiar foto de perfil
         function changeProfileImage() {
-            document.getElementById('profileInput').click();
+            document.getElementById("profileInput").click();
         }
-            document.getElementById('profileInput').addEventListener('change', function() {
-             const file = this.files[0];
-             if (!file) return;
 
+        document.getElementById("profileInput").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Previsualizar inmediatamente sin guardar aún
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("profileImage").src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+
+            // Enviar la imagen al servidor para guardarla
             const formData = new FormData();
-             formData.append('profile_pic', file);
+            formData.append("profileImage", file);
 
-             fetch("upload_profile.php", {
-        method: "POST",
-        body: formData
-         })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            document.getElementById('profileImage').src = data.newPath;
-         } else {
-            alert("Error: " + data.message);
-         }
-         });
-        });
+            fetch("php/cargar_imagen.php", {  
+                method: "POST",
+                body: formData  
+            })
+            .then(res => res.text())
+            .then(data => console.log(data))
+            .catch(err => console.error(err));
+        });        
 
         // Gallery Edit Mode
         let galleryEditMode = false;
