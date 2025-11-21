@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <title>ZonArte</title>
+    <style>
 * {
   box-sizing: border-box;
   margin: 0;
@@ -63,8 +71,7 @@ body {
 
 /* Barra de búsqueda */
 .search-center {
-    left: 50%;
-    transform: translateX(20%);
+    position: relative;
 }
 
 .search-bar {
@@ -72,7 +79,7 @@ body {
     max-width: 400px;
     min-width: 300px;
     height: 45px;
-    background: rgba(215,215,215,1);
+    background: rgba(215, 215, 215, 1);
     border-radius: 25px;
     display: flex;
     align-items: center;
@@ -81,13 +88,13 @@ body {
 }
 
 .search-bar:hover {
-    background: rgba(200,200,200,1);
+    background: rgba(200, 200, 200, 1);
     transform: translateY(-1px);
 }
 
 .search-input {
-    color: rgba(0,0,0,0.7);
-    font-family: Inter;
+    color: rgba(0, 0, 0, 0.7);
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 16px;
     flex: 1;
@@ -99,7 +106,7 @@ body {
 }
 
 .search-input::placeholder {
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
@@ -199,41 +206,41 @@ body {
 }
 
 .nav-item {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .nav-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.3), transparent);
-  transition: left 0.5s ease;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.3), transparent);
+    transition: left 0.5s ease;
 }
 
 .nav-item:hover::before {
-  left: 100%;
+    left: 100%;
 }
 
 .nav-item:hover {
-  background: rgba(78, 205, 196, 0.1);
-  color: #4ecdc4;
-  transform: translateY(-2px);
+    background: rgba(78, 205, 196, 0.1);
+    color: #4ecdc4;
+    transform: translateY(-2px);
 }
 
 .nav-item.active {
-  background: rgba(78, 205, 196, 0.2);
-  color: #4ecdc4;
-  font-weight: 600;
+    background: rgba(78, 205, 196, 0.2);
+    color: #4ecdc4;
+    font-weight: 600;
 }
 
 .profile-btn {
@@ -249,7 +256,7 @@ body {
 
 .profile-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(78,205,196,0.4);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
 }
 
 .profile-img {
@@ -263,11 +270,12 @@ body {
     background: linear-gradient(135deg, #667eea, #764ba2);
     padding: 32px;
     min-height: calc(100vh - 100px);
+    flex: 1;
 }
 
 /* ========== PORTFOLIO CON UPLOAD ========== */
 .portfolio-section {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 34px;
     margin-bottom: 24px;
@@ -292,129 +300,59 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
     border: 3px dashed rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .portfolio-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     background: rgba(78, 205, 196, 0.4);
     border-color: rgba(255, 255, 255, 0.8);
 }
 
-.portfolio-item.has-image {
-    border: none;
-    background: #4ecdc4;
-}
-
-.portfolio-item.has-image:hover {
-    background: #45b8b0;
-}
-
-/* Input file oculto */
-.file-input {
-    display: none;
-}
-
-/* Placeholder de upload */
-.upload-placeholder {
+.portfolio-item::after {
+    content: "Subir imagen";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    z-index: 1;
+    color: white;
+    font-size: 18px;
     pointer-events: none;
-}
-
-.upload-icon {
-    width: 60px;
-    height: 60px;
-    color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-}
-
-.portfolio-item:hover .upload-icon {
-    transform: translateY(-5px);
-    color: white;
-}
-
-.upload-text {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    font-weight: 500;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.portfolio-item:hover .upload-text {
-    color: white;
-    transform: scale(1.05);
-}
-
-/* Imagen cargada */
-.portfolio-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    position: relative;
     z-index: 0;
 }
 
-/* Botón para remover imagen */
-.remove-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 59, 48, 0.9);
-    color: white;
+.portfolio-item.has-image::after {
+    display: none;
+}
+
+.portfolio-item.has-image {
     border: none;
-    font-size: 28px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transition: all 0.3s ease;
-    line-height: 1;
-    padding: 0;
+    background: transparent;
 }
 
-.remove-btn:hover {
-    background: rgba(255, 59, 48, 1);
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(255, 59, 48, 0.5);
-}
-
-/* Overlay hover para imágenes cargadas */
-.portfolio-item.has-image::before {
-    content: '';
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(78,205,196,0.8), rgba(102,126,234,0.8));
-    opacity: 0;
-    transition: opacity 0.3s ease;
     z-index: 1;
 }
 
-.portfolio-item.has-image:hover::before {
-    opacity: 1;
+/* Input file */
+.image-upload {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 /* Info sections */
 .info-section {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 32px;
     margin-bottom: 24px;
@@ -460,12 +398,12 @@ body {
 
 .process-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(78,205,196,0.4);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
 }
 
 /* Footer */
 .footer {
-    background: rgba(178,255,234,0.8);
+    background: rgba(178, 255, 234, 0.8);
     padding: 16px 32px;
     display: flex;
     justify-content: space-between;
@@ -667,23 +605,18 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .upload-icon {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .upload-text {
+    .portfolio-item::after {
         font-size: 14px;
     }
 }
 
 /* Estados focus para accesibilidad */
 .search-input:focus {
-    color: rgba(0,0,0,0.9);
+    color: rgba(0, 0, 0, 0.9);
 }
 
 .search-bar:focus-within {
-    background: rgba(190,190,190,1);
+    background: rgba(190, 190, 190, 1);
     box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.3);
 }
 
@@ -722,31 +655,179 @@ body {
         transform: translateY(0);
     }
 }
-.image-upload {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <a href="index.html" class="logo">
+                <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+            </a>
+
+            <!-- Barra de búsqueda centrada -->
+            <div class="search-center">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <div class="dropdown-title">Amigos</div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">AC</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Anderson Campos</div>
+                                <div class="suggestion-role">Diseñador Gráfico</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">MC</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">María Contreras</div>
+                                <div class="suggestion-role">Artista Digital</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="dropdown-title">Personas</div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">JR</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Juan Rodriguez</div>
+                                <div class="suggestion-role">Ilustrador</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">SP</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Sofia Pereira</div>
+                                <div class="suggestion-role">Fotógrafa</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación -->
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item active">Inicio</a>
+                <a href="acerca.html" class="nav-item">Acerca de mi</a>
+                <a href="servicios.html" class="nav-item">Servicios</a>
+                <a href="social.html" class="nav-item">Social</a>
+                <a href="contacto.html" class="nav-item">Contacto</a>
+            </nav>
+
+            <div class="profile-btn">
+                <a href="perfil.html">
+                    <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
+                </a>
+            </div>
+
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Portfolio Grid reemplazado con inputs -->
+            <section class="portfolio-section">
+                <div class="portfolio-grid" id="gallery">
+                    <div class="portfolio-item">
+                        <input type="file" class="image-upload" accept="image/*">
+                </div>
+            </div>
+
+            </section>
+
+            <!-- Mi Trabajo -->
+            <section id="trabajo" class="info-section">
+                <h2 class="section-title">MI TRABAJO</h2>
+                <p class="section-text">
+                   
+                </p>
+            </section>
+
+            <!-- Mi Proceso -->
+            <section id="proceso" class="info-section">
+                <h2 class="section-title">MI PROCESO</h2>
+                <div class="process-grid">
+                    <div class="process-item">Conceptualización</div>
+                    <div class="process-item">Bocetos</div>
+                    <div class="process-item">Desarrollo</div>
+                    <div class="process-item">Finalización</div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-text">Información legal</div>
+            <div class="footer-links">
+                <a href="#privacidad" class="footer-link">Privacidad</a>
+                <a href="#terminos" class="footer-link">Términos</a>
+                <a href="#cookies" class="footer-link">Cookies</a>
+            </div>
+        </footer>
+
+    </div>
+
+<script>
+const gallery = document.getElementById("gallery");
+
+function createUploadItem() {
+    const div = document.createElement("div");
+    div.classList.add("portfolio-item");
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.classList.add("image-upload");
+
+    // Evento al subir imagen
+    input.addEventListener("change", handleImageUpload);
+
+    div.appendChild(input);
+    return div;
 }
 
-.portfolio-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255,255,255,0.2);
-    border: 2px dashed rgba(255,255,255,0.5);
+function handleImageUpload(event) {
+    const input = event.target;
+
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const parent = input.parentElement;
+
+            // Quitar imagen previa si existe
+            const oldImg = parent.querySelector("img");
+            if (oldImg) oldImg.remove();
+
+            parent.classList.add("has-image");
+
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            parent.appendChild(img);
+
+            // Crear automáticamente un nuevo slot vacío si no existe otro
+            const emptySlots = document.querySelectorAll(".portfolio-item:not(.has-image)");
+            if (emptySlots.length === 0) {
+                gallery.appendChild(createUploadItem());
+            }
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
 }
 
-.portfolio-item::after {
-    content: "Subir imagen";
-    position: absolute;
-    color: white;
-    font-size: 18px;
-    pointer-events: none;
-}
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
+// Activar manejador del primer input inicial
+document.querySelector(".image-upload").addEventListener("change", handleImageUpload);
+</script>
+
+</body>
+</html>
