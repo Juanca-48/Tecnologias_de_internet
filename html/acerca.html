@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link href="../css/acerca.css" rel="stylesheet" />
+      <link href="../css/acerca_no_iniciado.css" rel="stylesheet" />
     <title>ZonArte - Acerca de mi</title>
+
 </head>
 
 <body>
@@ -18,52 +19,15 @@
                 <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
             </a>
 
-            <!-- Barra de bÃºsqueda centrada -->
-           <div class="search-center">
-    <div class="search-container">
-        <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
-        </div>
-        <div class="dropdown-menu" id="dropdownMenu">
-            <div class="dropdown-title">Amigos</div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">AC</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">Anderson Campos</div>
-                    <div class="suggestion-role">Diseñador Gráfico</div>
+            <div class="search-center">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu"></div>
                 </div>
-                <div class="suggestion-action">+</div>
             </div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">MC</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">María Contreras</div>
-                    <div class="suggestion-role">Artista Digital</div>
-                </div>
-                <div class="suggestion-action">+</div>
-            </div>
-            <div class="dropdown-title">Personas</div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">JR</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">Juan Rodriguez</div>
-                    <div class="suggestion-role">Ilustrador</div>
-                </div>
-                <div class="suggestion-action">+</div>
-            </div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">SP</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">Sofia Pereira</div>
-                    <div class="suggestion-role">Fotógrafa</div>
-                </div>
-                <div class="suggestion-action">+</div>
-            </div>
-        </div>
-    </div>
-</div>
 
-            <!-- NavegaciÃ³n a la derecha -->
             <nav class="nav-menu">
                 <a href="index.html" class="nav-item">Inicio</a>
                 <a href="acerca.html" class="nav-item active">Acerca de mi</a>
@@ -72,94 +36,152 @@
                 <a href="contacto.html" class="nav-item">Contacto</a>
             </nav>
 
-           <div class="profile-btn">
-    <a href="perfil.html">
-        <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
-    </a>
-</div>
-
+            <div class="profile-btn">
+                <a href="perfil.html">
+                    <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
+                </a>
+            </div>
         </header>
 
         <!-- Main Content -->
         <main class="main-content">
             <section class="about-section">
-                <!-- TÃ­tulo Principal -->
+
                 <div class="section-header">
                     <h1 class="main-title">ACERCA DE MI</h1>
                 </div>
 
-                <!-- Contenido Principal -->
                 <div class="about-content">
-                    <!-- Imagen de perfil/arte -->
+
+                    <!-- Imagen a la IZQUIERDA -->
                     <div class="profile-art">
-                        <img src="../images/IMG_Acerca.png" alt="Imagen de perfil del artista" class="art-image">
+                        <div class="portfolio-item" id="profileImageContainer">
+                            <input type="file" class="image-upload" id="aboutImageUpload" accept="image/*">
+                        </div>
                     </div>
 
+                    <!-- Textos a la DERECHA -->
                     <div class="info-panel">
-                        <div class="info-section">
-                            <h2 class="section-title">BIOGRAFÍA</h2>
-                            <p class="section-text">
-                                Soy un artista digital colombiano apasionado por la ilustración y la animación.
-                                Desde pequeño descubrí que podía contar historias a través de los dibujos, y con el
-                                tiempo
-                                encontré en la programación una nueva forma de darles movimiento e interactividad.
-                                Mi trabajo explora la fusión entre el arte visual y la tecnología, creando piezas que
-                                van
-                                desde ilustraciones llenas de color hasta proyectos digitales.
+
+                        <!-- BIOGRAFÍA -->
+                        <div class="info-section" id="bioSection">
+                            <div class="section-title-editable">
+                                <h2 class="section-title">BIOGRAFÍA</h2>
+                                <button class="edit-btn" onclick="editBio()">Editar</button>
+                            </div>
+                            <p class="section-text" id="bioText">Aquí va tu biografía inicial...</p>
+                            <div id="bioEdit" class="edit-container" style="display:none;">
+                                <textarea id="bioTextarea" class="edit-textarea"></textarea>
                                 <br><br>
-                                Actualmente soy estudiante de la Universidad Militar, cursando Ingeniería Multimedia,
-                                esperando graduarme pronto.
-                            </p>
+                                <button class="edit-btn" onclick="saveBio()">Guardar</button>
+                                <button class="edit-btn cancel-btn" onclick="cancelBio()">Cancelar</button>
+                            </div>
                         </div>
 
-                        <div class="info-section">
-                            <h2 class="section-title">ENFOQUE</h2>
-                            <p class="section-text">
-                                Me apasiona dar vida a ideas a través de la ilustración y la animación, explorando al
-                                mismo tiempo
-                                cómo la programación puede abrir nuevas formas de expresión y narrativa digital.
-                            </p>
+                        <!-- ENFOQUE -->
+                        <div class="info-section" id="focusSection">
+                            <div class="section-title-editable">
+                                <h2 class="section-title">ENFOQUE</h2>
+                                <button class="edit-btn" onclick="editFocus()">Editar</button>
+                            </div>
+                            <p class="section-text" id="focusText">Aquí va tu enfoque inicial...</p>
+                            <div id="focusEdit" class="edit-container" style="display:none;">
+                                <textarea id="focusTextarea" class="edit-textarea"></textarea>
+                                <br><br>
+                                <button class="edit-btn" onclick="saveFocus()">Guardar</button>
+                                <button class="edit-btn cancel-btn" onclick="cancelFocus()">Cancelar</button>
+                            </div>
                         </div>
+
                     </div>
+
                 </div>
             </section>
         </main>
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-text">InformaciÃ³n legal</div>
-                <div class="footer-links">
-                    <a href="#privacidad" class="footer-link">Privacidad</a>
-                    <a href="#terminos" class="footer-link">Términos</a>
-                    <a href="#cookies" class="footer-link">Cookies</a>
-                </div>
-            </footer>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-text">Información legal</div>
+            <div class="footer-links">
+                <a href="#privacidad" class="footer-link">Privacidad</a>
+                <a href="#terminos" class="footer-link">Términos</a>
+                <a href="#cookies" class="footer-link">Cookies</a>
+            </div>
+        </footer>
     </div>
+
 <script>
-    const searchInput = document.getElementById('searchInput');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+/* Dropdown búsqueda */
+const searchInput = document.getElementById('searchInput');
+const dropdownMenu = document.getElementById('dropdownMenu');
 
-    // Abrir/cerrar dropdown al hacer click en el input
-    searchInput.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('active');
-    });
+searchInput.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('active');
+});
 
-    // Cerrar dropdown al clickar fuera
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-container')) {
-            dropdownMenu.classList.remove('active');
-        }
-    });
+/* Imagen editable */
+const uploadInput = document.getElementById("aboutImageUpload");
+const container = document.getElementById("profileImageContainer");
 
-    // Cerrar dropdown cuando se selecciona una sugerencia
-    document.querySelectorAll('.suggestion-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const name = this.querySelector('.suggestion-name').textContent;
-            searchInput.value = name;
-            dropdownMenu.classList.remove('active');
-        });
-    });
+uploadInput.addEventListener("change", function() {
+    if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const oldImg = container.querySelector("img");
+            if (oldImg) oldImg.remove();
+
+            container.classList.add("has-image");
+
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            container.appendChild(img);
+        };
+        reader.readAsDataURL(this.files[0]);
+    }
+});
+
+/* Biografía */
+function editBio() {
+    document.getElementById("bioSection").classList.add("editing");
+    document.getElementById("bioText").style.display = "none";
+    document.getElementById("bioEdit").style.display = "block";
+    document.getElementById("bioTextarea").value = document.getElementById("bioText").innerText.trim();
+}
+
+function saveBio() {
+    document.getElementById("bioText").innerText = document.getElementById("bioTextarea").value.trim();
+    document.getElementById("bioSection").classList.remove("editing");
+    document.getElementById("bioText").style.display = "block";
+    document.getElementById("bioEdit").style.display = "none";
+}
+
+function cancelBio() {
+    document.getElementById("bioSection").classList.remove("editing");
+    document.getElementById("bioText").style.display = "block";
+    document.getElementById("bioEdit").style.display = "none";
+}
+
+/* Enfoque */
+function editFocus() {
+    document.getElementById("focusSection").classList.add("editing");
+    document.getElementById("focusText").style.display = "none";
+    document.getElementById("focusEdit").style.display = "block";
+    document.getElementById("focusTextarea").value = document.getElementById("focusText").innerText.trim();
+}
+
+function saveFocus() {
+    document.getElementById("focusText").innerText = document.getElementById("focusTextarea").value.trim();
+    document.getElementById("focusSection").classList.remove("editing");
+    document.getElementById("focusText").style.display = "block";
+    document.getElementById("focusEdit").style.display = "none";
+}
+
+function cancelFocus() {
+    document.getElementById("focusSection").classList.remove("editing");
+    document.getElementById("focusText").style.display = "block";
+    document.getElementById("focusEdit").style.display = "none";
+}
 </script>
 
 </body>
-
 </html>

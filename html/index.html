@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link href="../css/main.css" rel="stylesheet" />
+    <link href="../css/index_no_iniciado.css" rel="stylesheet" />
     <title>ZonArte</title>
+    
 </head>
 <body>
     <div class="container">
@@ -16,51 +17,56 @@
             </a>
 
             <!-- Barra de búsqueda centrada -->
-           <div class="search-center">
-    <div class="search-container">
-        <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
-        </div>
-        <div class="dropdown-menu" id="dropdownMenu">
-            <div class="dropdown-title">Amigos</div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">AC</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">Anderson Campos</div>
-                    <div class="suggestion-role">Diseñador Gráfico</div>
-                </div>
-                <div class="suggestion-action">+</div>
-            </div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">MC</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">María Contreras</div>
-                    <div class="suggestion-role">Artista Digital</div>
-                </div>
-                <div class="suggestion-action">+</div>
-            </div>
-            <div class="dropdown-title">Personas</div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">JR</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">Juan Rodriguez</div>
-                    <div class="suggestion-role">Ilustrador</div>
-                </div>
-                <div class="suggestion-action">+</div>
-            </div>
-            <div class="suggestion-item">
-                <div class="suggestion-avatar">SP</div>
-                <div class="suggestion-info">
-                    <div class="suggestion-name">Sofia Pereira</div>
-                    <div class="suggestion-role">Fotógrafa</div>
-                </div>
-                <div class="suggestion-action">+</div>
-            </div>
-        </div>
-    </div>
-</div>
+            <div class="search-center">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <div class="dropdown-title">Amigos</div>
 
-            <!-- Navegación a la derecha -->
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">AC</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Anderson Campos</div>
+                                <div class="suggestion-role">Diseñador Gráfico</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">MC</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">María Contreras</div>
+                                <div class="suggestion-role">Artista Digital</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="dropdown-title">Personas</div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">JR</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Juan Rodriguez</div>
+                                <div class="suggestion-role">Ilustrador</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">SP</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Sofia Pereira</div>
+                                <div class="suggestion-role">Fotógrafa</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación -->
             <nav class="nav-menu">
                 <a href="index.html" class="nav-item active">Inicio</a>
                 <a href="acerca.html" class="nav-item">Acerca de mi</a>
@@ -70,55 +76,31 @@
             </nav>
 
             <div class="profile-btn">
-    <a href="perfil.html">
-        <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
-    </a>
-</div>
+                <a href="perfil.html">
+                    <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
+                </a>
+            </div>
 
         </header>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Portfolio Grid -->
+
+            <!-- Portfolio Grid reemplazado con inputs -->
             <section class="portfolio-section">
-                <div class="portfolio-grid">
+                <div class="portfolio-grid" id="gallery">
                     <div class="portfolio-item">
-                        <img src="../images/ART_1.png" alt="Arte 1" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_2.png" alt="Arte 2" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_3.png" alt="Arte 3" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_4.png" alt="Arte 4" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_5.png" alt="Arte 5" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_1.png" alt="Arte 1" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_2.png" alt="Arte 2" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_3.png" alt="Arte 3" class="portfolio-img">
-                    </div>
+                        <input type="file" class="image-upload" accept="image/*">
                 </div>
+            </div>
+
             </section>
 
             <!-- Mi Trabajo -->
             <section id="trabajo" class="info-section">
                 <h2 class="section-title">MI TRABAJO</h2>
                 <p class="section-text">
-                    Me he desempeñado como ilustrador y animador freelance he trabajado con clientes internacionales, 
-                    desarrollando proyectos que van desde piezas ilustradas hasta animaciones personalizadas. 
-                    Mi trabajo se caracteriza por adaptarme a las necesidades de cada persona.
-                    Si bien la mayoría de mis colaboraciones se mantienen privadas por acuerdos de confidencialidad, 
-                    aquí presento una muestra de proyectos que reflejan mi estilo, mi proceso creativo y la pasión 
-                    que pongo en cada encargo.
+                   
                 </p>
             </section>
 
@@ -132,6 +114,7 @@
                     <div class="process-item">Finalización</div>
                 </div>
             </section>
+
         </main>
 
         <!-- Footer -->
@@ -143,31 +126,58 @@
                 <a href="#cookies" class="footer-link">Cookies</a>
             </div>
         </footer>
+
     </div>
+
 <script>
-    const searchInput = document.getElementById('searchInput');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+const gallery = document.getElementById("gallery");
 
-    // Abrir/cerrar dropdown al hacer click en el input
-    searchInput.addEventListener('click', () => {
-        dropdownMenu.classList.toggle('active');
-    });
+function createUploadItem() {
+    const div = document.createElement("div");
+    div.classList.add("portfolio-item");
 
-    // Cerrar dropdown al clickar fuera
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-container')) {
-            dropdownMenu.classList.remove('active');
-        }
-    });
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.classList.add("image-upload");
 
-    // Cerrar dropdown cuando se selecciona una sugerencia
-    document.querySelectorAll('.suggestion-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const name = this.querySelector('.suggestion-name').textContent;
-            searchInput.value = name;
-            dropdownMenu.classList.remove('active');
-        });
-    });
+    // Evento al subir imagen
+    input.addEventListener("change", handleImageUpload);
+
+    div.appendChild(input);
+    return div;
+}
+
+function handleImageUpload(event) {
+    const input = event.target;
+
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const parent = input.parentElement;
+
+            // Quitar imagen previa si existe
+            const oldImg = parent.querySelector("img");
+            if (oldImg) oldImg.remove();
+
+            parent.classList.add("has-image");
+
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            parent.appendChild(img);
+
+            // Crear automáticamente un nuevo slot vacío si no existe otro
+            const emptySlots = document.querySelectorAll(".portfolio-item:not(.has-image)");
+            if (emptySlots.length === 0) {
+                gallery.appendChild(createUploadItem());
+            }
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// Activar manejador del primer input inicial
+document.querySelector(".image-upload").addEventListener("change", handleImageUpload);
 </script>
 
 </body>
