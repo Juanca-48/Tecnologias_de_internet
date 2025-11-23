@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/sign_up.css">
+    <title>Sign Up - ZonArte</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">ÚNETE A ZONARTE</h1>
+            
+            <form id="signUpForm" onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label class="label">Nombres</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        class="input-field" 
+                        placeholder="Ingresa aquí tu nombre" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Apellidos</label>
+                    <input 
+                        type="text" 
+                        id="lastname" 
+                        class="input-field" 
+                        placeholder="Ingresa aquí tus apellidos" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Correo</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="input-field" 
+                        placeholder="Ingresa aquí tu email" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Usuario</label>
+                    <input 
+                        type="text" 
+                        id="user" 
+                        class="input-field" 
+                        placeholder="Ingresa aquí un nombre de usuario" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="input-field" 
+                        placeholder="Crea una contraseña segura" 
+                        required
+                        minlength="6"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Confirmar Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        class="input-field" 
+                        placeholder="Confirma tu contraseña" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Fecha de nacimiento</label>
+                    <input 
+                        type="date" 
+                        id="bornDate" 
+                        class="input-field" 
+                        placeholder="01/01/1999" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Pais</label>
+                    <input 
+                        type="text" 
+                        id="country" 
+                        class="input-field" 
+                        placeholder="Ingresa tu pais de residencia" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Telefono</label>
+                    <input 
+                        type="varchar" 
+                        id="phoneNumber" 
+                        class="input-field" 
+                        placeholder="Ingresa tu número de telefono" 
+                        required
+                    >
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+                <div id="successMessage" class="success-message"></div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-signup">Registrarse</button>
+                    <button type="reset" class="btn btn-clear">Limpiar</button>
+                </div>
+
+                <div class="login-link">
+                    <p>¿Ya tienes cuenta? <a href="sign_in.html">Inicia Sesión</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script >
+        async function handleSignUp(event) {
+    event.preventDefault();
+    
+    // Obtener los valores del formulario
+    const name = document.getElementById('name').value;
+    const lastname = document.getElementById('lastname').value;
+    const email = document.getElementById('email').value;
+    const user = document.getElementById('user').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const bornDate = document.getElementById('bornDate').value;
+    const country = document.getElementById('country').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
+    
+    // Limpiar mensajes previos
+    errorMessage.classList.remove('show');
+    successMessage.classList.remove('show');
+    
+    // Validar que las contraseñas coincidan
+    if (password !== confirmPassword) {
+        errorMessage.textContent = 'Las contraseñas no coinciden';
+        errorMessage.classList.add('show');
+        return;
+    }
+    
+    // Validar longitud de contraseña
+    if (password.length < 6) {
+        errorMessage.textContent = 'La contraseña debe tener al menos 6 caracteres';
+        errorMessage.classList.add('show');
+        return;
+    }
+    
+    // Enviar los datos al backend PHP usando fetch()
+    try {
+        const response = await fetch('./php/registrar_usuario.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name,
+                lastname,
+                email,
+                user,
+                password,
+                bornDate,
+                country,
+                phoneNumber
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            successMessage.textContent = result.message;
+            successMessage.classList.add('show');
+
+            setTimeout(() => {
+                window.location.href = 'sign_in.html';
+            }, 2000);
+        } else {
+            errorMessage.textContent = result.message;
+            errorMessage.classList.add('show');
+        }
+
+    } catch (error) {
+        errorMessage.textContent = 'Error al conectar con el servidor.';
+        errorMessage.classList.add('show');
+        console.error(error);
+    }
+}
+    </script>
+</body>
+</html>

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link href="./css/perfil.css" rel="stylesheet" />
+    <link href="../css/perfil.css" rel="stylesheet" />
     <title>ZonArte - Mi Perfil</title>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <a href="index.html" class="logo">
-            <img src="./images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+            <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
         </a>
 
         <!-- Barra de búsqueda centrada -->
@@ -53,12 +53,23 @@
 
         <div class="profile-btn">
     <a href="perfil.html">
-        <img src="./images/Perfil.png" alt="Perfil" class="profile-img">
+        <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
     </a>
 </div>
 
     </header>
-
+    <script>
+    fetch("php/get_session.php")    
+        .then(r => r.json())
+        .then(data => {
+            if (data.logged) {
+                document.getElementById("profileImage").src = "../images/" + data.foto;
+            } else {
+                // opcional: redirigir a login
+                window.location.href = "login.html";
+            }
+        });
+    </script>
     <!-- Main Content -->
     <div class="profile-container">
         <!-- Profile Header -->
@@ -68,10 +79,11 @@
                     <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                 </svg>
             </a>
-            
             <div class="profile-image-section">
-                <img src="./images/PFP.png" alt="Perfil" class="profile-image" id="profileImage">
+                <img src="../images/" + data.foto alt="Perfil" class="profile-image" id="profileImage">
                 <button class="edit-image-btn" onclick="changeProfileImage()">Cambiar</button>
+                <input type="file" id="profileInput" accept="image/*" style="display:none">
+
             </div>
             <div class="profile-info">
                 <h1 class="profile-name">ANDERSON MUÑOZ</h1>
@@ -415,10 +427,59 @@
             skillsEdit.style.display = 'none';
         }
 
-        // Profile Image
+//        // Profile Image
+//        function changeProfileImage() {
+//            document.getElementById('profileInput').click();
+//        }
+//            document.getElementById('profileInput').addEventListener('change', function() {
+//             const file = this.files[0];
+//             if (!file) return;
+//
+//            const formData = new FormData();
+//             formData.append('profile_pic', file);
+//
+//             fetch("upload_profile.php", {
+//        method: "POST",
+//        body: formData
+//         })
+//    .then(res => res.json())
+//    .then(data => {
+//        if (data.success) {
+//            document.getElementById('profileImage').src = data.newPath;
+//         } else {
+//            alert("Error: " + data.message);
+//         }
+//         });
+//        });
+
+        // Cambiar foto de perfil
         function changeProfileImage() {
-            alert('Función para cambiar imagen de perfil. Aquí se abriría un selector de archivos.');
+            document.getElementById("profileInput").click();
         }
+
+        document.getElementById("profileInput").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Previsualizar inmediatamente sin guardar aún
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("profileImage").src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+
+            // Enviar la imagen al servidor para guardarla
+            const formData = new FormData();
+            formData.append("profileImage", file);
+
+            fetch("php/cargar_imagen.php", {  
+                method: "POST",
+                body: formData  
+            })
+            .then(res => res.text())
+            .then(data => console.log(data))
+            .catch(err => console.error(err));
+        });        
 
         // Gallery Edit Mode
         let galleryEditMode = false;

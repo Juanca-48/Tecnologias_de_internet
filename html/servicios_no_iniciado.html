@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="../css/servicios_no_iniciado.css" rel="stylesheet" />
+
+    <title>ZonArte - Servicios</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="index_no_iniciado.html" class="logo">
+            <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+        </a>
+
+        <div class="search-center">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-title">Amigos</div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">AC</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">Anderson Campos</div>
+                            <div class="suggestion-role">Diseñador Gráfico</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">MC</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">María Contreras</div>
+                            <div class="suggestion-role">Artista Digital</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                    <div class="dropdown-title">Personas</div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">JR</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">Juan Rodriguez</div>
+                            <div class="suggestion-role">Ilustrador</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">SP</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">Sofia Pereira</div>
+                            <div class="suggestion-role">Fotógrafa</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="index_no_iniciado.html" class="nav-item">Inicio</a>
+            <a href="acerca_no_iniciado.html" class="nav-item">Acerca de mi</a>
+            <a href="servicios_no_iniciado.html" class="nav-item active">Servicios</a>
+            <a href="social_no_iniciado.html" class="nav-item">Social</a>
+            <a href="contacto_no_iniciado.html" class="nav-item">Contacto</a>
+        </nav>
+        
+        <div class="profile-btn">
+            <a href="perfil.html">
+                <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-container">
+            <div class="services-section">
+                <div class="services-wrapper">
+                    <div class="section-header">
+                        <h1 class="section-title">SERVICIOS</h1>
+                    </div>
+
+                    <div class="content-area" id="contentArea">
+                    </div>
+
+                    <div class="add-field-controls">
+                        <button class="edit-btn" onclick="addTextField()">+ Agregar Campo de Texto</button>
+                        <button class="edit-btn" onclick="addImageField()">+ Agregar Galería de Imágenes</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer-section">
+                <div class="footer-content">
+                    <div class="legal-info">
+                        <span>Información legal</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+<script>
+    let fieldCount = 0;
+
+    const searchInput = document.getElementById('searchInput');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    searchInput.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container')) {
+            dropdownMenu.classList.remove('active');
+        }
+    });
+
+    document.querySelectorAll('.suggestion-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const name = this.querySelector('.suggestion-name').textContent;
+            searchInput.value = name;
+            dropdownMenu.classList.remove('active');
+        });
+    });
+
+    function addTextField() {
+        fieldCount++;
+        const contentArea = document.getElementById('contentArea');
+        
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'info-section';
+        fieldDiv.id = 'field-' + fieldCount;
+        
+        fieldDiv.innerHTML = `
+            <div class="section-title-editable">
+                <div class="field-title-wrapper">
+                    <input type="text" class="field-title-input" placeholder="Título del servicio" value="" style="display: none;">
+                    <h3 class="field-display-title-header">Título del servicio</h3>
+                </div>
+                <div class="button-actions">
+                    <button class="edit-btn" onclick="toggleEditMode('field-${fieldCount}')">Editar</button>
+                    <button class="delete-btn-field" onclick="deleteField('field-${fieldCount}')">Eliminar</button>
+                </div>
+            </div>
+            <textarea class="field-description-input" placeholder="Descripción del servicio" style="display: none;"></textarea>
+            <div class="field-display">
+                <p class="field-display-description"></p>
+            </div>
+        `;
+        
+        contentArea.appendChild(fieldDiv);
+    }
+
+    function addImageField() {
+        fieldCount++;
+        const contentArea = document.getElementById('contentArea');
+        
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'info-section';
+        fieldDiv.id = 'field-' + fieldCount;
+        fieldDiv.dataset.isGallery = 'true';
+        fieldDiv.dataset.editMode = 'true';
+        
+        fieldDiv.innerHTML = `
+            <div class="section-title-editable">
+                <div class="field-title-wrapper">
+                    <input type="text" class="field-title-input" placeholder="Título de la galería" value="">
+                </div>
+                <div class="button-actions">
+                    <button class="edit-btn gallery-save-btn" onclick="toggleGalleryEditMode('field-${fieldCount}')">Guardar</button>
+                    <button class="delete-btn-field" onclick="deleteField('field-${fieldCount}')">Eliminar</button>
+                </div>
+            </div>
+            <div class="portfolio-grid" id="gallery-${fieldCount}">
+                <div class="portfolio-item">
+                    <input type="file" class="image-upload" accept="image/*" onchange="handleImageUpload(event, 'gallery-${fieldCount}')">
+                </div>
+            </div>
+        `;
+        
+        contentArea.appendChild(fieldDiv);
+    }
+
+    function toggleEditMode(fieldId) {
+        const field = document.getElementById(fieldId);
+        const titleInput = field.querySelector('.field-title-input');
+        const titleHeader = field.querySelector('.field-display-title-header');
+        const descInput = field.querySelector('.field-description-input');
+        const displayDiv = field.querySelector('.field-display');
+        const editBtn = field.querySelector('.edit-btn');
+
+        if (editBtn.textContent === 'Editar') {
+            titleInput.value = titleHeader.textContent;
+            titleInput.style.display = 'block';
+            titleHeader.style.display = 'none';
+            if (descInput) {
+                descInput.style.display = 'block';
+            }
+            if (displayDiv) displayDiv.style.display = 'none';
+            editBtn.textContent = 'Guardar';
+        } else {
+            const displayDesc = field.querySelector('.field-display-description');
+            
+            titleHeader.textContent = titleInput.value || 'Título del servicio';
+            if (displayDesc) {
+                displayDesc.textContent = descInput.value || '';
+            }
+            
+            titleInput.style.display = 'none';
+            titleHeader.style.display = 'block';
+            if (descInput) descInput.style.display = 'none';
+            if (displayDiv) displayDiv.style.display = 'block';
+            editBtn.textContent = 'Editar';
+        }
+    }
+
+    function toggleGalleryEditMode(fieldId) {
+        const field = document.getElementById(fieldId);
+        const titleInput = field.querySelector('.field-title-input');
+        const saveBtn = field.querySelector('.gallery-save-btn');
+        const gallery = field.querySelector('.portfolio-grid');
+        
+        if (field.dataset.editMode === 'true') {
+            // Guardar modo - remover slots vacíos y cambiar a modo vista
+            const emptySlots = gallery.querySelectorAll('.portfolio-item:not(.has-image)');
+            emptySlots.forEach(slot => slot.remove());
+            
+            // Cambiar estado
+            field.dataset.editMode = 'false';
+            titleInput.disabled = true;
+            titleInput.classList.add('title-locked');
+            saveBtn.textContent = 'Editar';
+            
+            // Hacer que las imágenes no sean editables
+            const allItems = gallery.querySelectorAll('.portfolio-item');
+            allItems.forEach(item => {
+                const input = item.querySelector('.image-upload');
+                if (input) {
+                    input.disabled = true;
+                }
+            });
+        } else {
+            // Modo edición - permitir agregar más imágenes
+            field.dataset.editMode = 'true';
+            titleInput.disabled = false;
+            titleInput.classList.remove('title-locked');
+            saveBtn.textContent = 'Guardar';
+            
+            // Permitir editar imágenes
+            const allItems = gallery.querySelectorAll('.portfolio-item');
+            allItems.forEach(item => {
+                const input = item.querySelector('.image-upload');
+                if (input) {
+                    input.disabled = false;
+                }
+            });
+            
+            // Agregar un slot vacío si no existe
+            const hasEmptySlot = gallery.querySelector('.portfolio-item:not(.has-image)');
+            if (!hasEmptySlot) {
+                const newItem = document.createElement('div');
+                newItem.className = 'portfolio-item';
+                const newInput = document.createElement('input');
+                newInput.type = 'file';
+                newInput.accept = 'image/*';
+                newInput.className = 'image-upload';
+                newInput.onchange = function(e) { handleImageUpload(e, gallery.id); };
+                newItem.appendChild(newInput);
+                gallery.appendChild(newItem);
+            }
+        }
+    }
+
+    function deleteField(fieldId) {
+        const field = document.getElementById(fieldId);
+        field.remove();
+    }
+
+    function handleImageUpload(event, galleryId) {
+        const input = event.target;
+        const gallery = document.getElementById(galleryId);
+        const field = gallery.closest('.info-section');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const parent = input.parentElement;
+                const oldImg = parent.querySelector("img");
+                if (oldImg) oldImg.remove();
+
+                parent.classList.add("has-image");
+
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                parent.appendChild(img);
+
+                // Solo agregar nuevo slot si está en modo edición
+                if (field.dataset.editMode === 'true') {
+                    const emptySlots = gallery.querySelectorAll(".portfolio-item:not(.has-image)");
+                    if (emptySlots.length === 0) {
+                        const newItem = document.createElement('div');
+                        newItem.className = 'portfolio-item';
+                        const newInput = document.createElement('input');
+                        newInput.type = 'file';
+                        newInput.accept = 'image/*';
+                        newInput.className = 'image-upload';
+                        newInput.onchange = function(e) { handleImageUpload(e, galleryId); };
+                        newItem.appendChild(newInput);
+                        gallery.appendChild(newItem);
+                    }
+                }
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+</body>
+
+</html>
