@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="../css/index_no_iniciado.css" rel="stylesheet" />
+    <title>ZonArte</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <a href="index_no_iniciado.html" class="logo">
+                <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+            </a>
+
+            <!-- Barra de búsqueda centrada -->
+            <div class="search-center">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Buscar..." id="searchInput">
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <div class="dropdown-title">Amigos</div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">AC</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Anderson Campos</div>
+                                <div class="suggestion-role">Diseñador Gráfico</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">MC</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">María Contreras</div>
+                                <div class="suggestion-role">Artista Digital</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="dropdown-title">Personas</div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">JR</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Juan Rodriguez</div>
+                                <div class="suggestion-role">Ilustrador</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+
+                        <div class="suggestion-item">
+                            <div class="suggestion-avatar">SP</div>
+                            <div class="suggestion-info">
+                                <div class="suggestion-name">Sofia Pereira</div>
+                                <div class="suggestion-role">Fotógrafa</div>
+                            </div>
+                            <div class="suggestion-action">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación -->
+            <nav class="nav-menu">
+                <a href="index_no_iniciado.html" class="nav-item active">Inicio</a>
+                <a href="acerca_no_iniciado.html" class="nav-item">Acerca de mi</a>
+                <a href="servicios_no_iniciado.html" class="nav-item">Servicios</a>
+                <a href="social_no_iniciado.html" class="nav-item">Social</a>
+                <a href="contacto_no_iniciado.html" class="nav-item">Contacto</a>
+            </nav>
+
+            <div class="profile-btn">
+                <a href="perfil.html">
+                    <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
+                </a>
+            </div>
+
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Portfolio Grid con botón de guardar -->
+            <section class="portfolio-section">
+                <div class="portfolio-controls">
+                    <button class="save-gallery-btn" id="saveGalleryBtn" onclick="toggleGalleryMode()">Guardar Galería</button>
+                </div>
+                <div class="portfolio-grid" id="gallery">
+                    <div class="portfolio-item">
+                        <input type="file" class="image-upload" accept="image/*">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mi Trabajo -->
+            <section id="trabajo" class="info-section">
+                <div class="section-title-editable">
+                    <h2 class="section-title">MI TRABAJO</h2>
+                    <button class="edit-btn" onclick="toggleWorkEdit()">Editar</button>
+                </div>
+                <p class="section-text" id="workText">Escribe aquí sobre tu trabajo...</p>
+                <div class="edit-container" id="workEdit" style="display:none;">
+                    <textarea id="workTextarea" class="edit-textarea" placeholder="Describe tu trabajo..."></textarea>
+                    <br><br>
+                    <button class="edit-btn" onclick="saveWork()">Guardar</button>
+                    <button class="edit-btn cancel-btn" onclick="cancelWork()">Cancelar</button>
+                </div>
+            </section>
+
+            <!-- Mi Proceso -->
+            <section id="proceso" class="info-section">
+                <div class="section-title-editable">
+                    <h2 class="section-title">MI PROCESO</h2>
+                    <button class="edit-btn" id="processEditBtn" onclick="toggleProcessEdit()">Editar</button>
+                </div>
+                <div class="process-grid" id="processGrid">
+                    <div class="process-item">
+                        <span class="process-text">Conceptualización</span>
+                        <span class="edit-icon">✎</span>
+                        <button class="delete-process-btn" onclick="deleteProcessItem(event, this)">×</button>
+                    </div>
+                    <div class="process-item">
+                        <span class="process-text">Bocetos</span>
+                        <span class="edit-icon">✎</span>
+                        <button class="delete-process-btn" onclick="deleteProcessItem(event, this)">×</button>
+                    </div>
+                    <div class="process-item">
+                        <span class="process-text">Desarrollo</span>
+                        <span class="edit-icon">✎</span>
+                        <button class="delete-process-btn" onclick="deleteProcessItem(event, this)">×</button>
+                    </div>
+                    <div class="process-item">
+                        <span class="process-text">Finalización</span>
+                        <span class="edit-icon">✎</span>
+                        <button class="delete-process-btn" onclick="deleteProcessItem(event, this)">×</button>
+                    </div>
+                </div>
+                <div class="process-controls" id="processControls" style="display: none;">
+                    <button class="edit-btn" onclick="addProcessItem()">+ Agregar Paso</button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-text">Información legal</div>
+            <div class="footer-links">
+                <a href="#privacidad" class="footer-link">Privacidad</a>
+                <a href="#terminos" class="footer-link">Términos</a>
+                <a href="#cookies" class="footer-link">Cookies</a>
+            </div>
+        </footer>
+
+    </div>
+
+<script>
+let isEditMode = true;
+
+const searchInput = document.getElementById('searchInput');
+const dropdownMenu = document.getElementById('dropdownMenu');
+
+searchInput.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-container')) {
+        dropdownMenu.classList.remove('active');
+    }
+});
+
+document.querySelectorAll('.suggestion-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const name = this.querySelector('.suggestion-name').textContent;
+        searchInput.value = name;
+        dropdownMenu.classList.remove('active');
+    });
+});
+
+const gallery = document.getElementById("gallery");
+const saveBtn = document.getElementById("saveGalleryBtn");
+
+function createUploadItem() {
+    const div = document.createElement("div");
+    div.classList.add("portfolio-item");
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.classList.add("image-upload");
+
+    input.addEventListener("change", handleImageUpload);
+
+    div.appendChild(input);
+    return div;
+}
+
+function handleImageUpload(event) {
+    const input = event.target;
+
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const parent = input.parentElement;
+
+            const oldImg = parent.querySelector("img");
+            if (oldImg) oldImg.remove();
+
+            parent.classList.add("has-image");
+
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            parent.appendChild(img);
+
+            if (isEditMode) {
+                const emptySlots = document.querySelectorAll(".portfolio-item:not(.has-image)");
+                if (emptySlots.length === 0) {
+                    gallery.appendChild(createUploadItem());
+                }
+            }
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function toggleGalleryMode() {
+    if (isEditMode) {
+        const emptySlots = gallery.querySelectorAll('.portfolio-item:not(.has-image)');
+        emptySlots.forEach(slot => slot.remove());
+        
+        const allInputs = gallery.querySelectorAll('.image-upload');
+        allInputs.forEach(input => {
+            input.disabled = true;
+        });
+        
+        isEditMode = false;
+        saveBtn.textContent = 'Editar Galería';
+        saveBtn.classList.add('edit-mode');
+    } else {
+        const allInputs = gallery.querySelectorAll('.image-upload');
+        allInputs.forEach(input => {
+            input.disabled = false;
+        });
+        
+        const hasEmptySlot = gallery.querySelector('.portfolio-item:not(.has-image)');
+        if (!hasEmptySlot) {
+            gallery.appendChild(createUploadItem());
+        }
+        
+        isEditMode = true;
+        saveBtn.textContent = 'Guardar Galería';
+        saveBtn.classList.remove('edit-mode');
+    }
+}
+
+document.querySelector(".image-upload").addEventListener("change", handleImageUpload);
+
+// Mi Trabajo - Edición
+function toggleWorkEdit() {
+    const section = document.getElementById('trabajo');
+    const text = document.getElementById('workText');
+    const editContainer = document.getElementById('workEdit');
+    const textarea = document.getElementById('workTextarea');
+    const editBtn = section.querySelector('.edit-btn');
+    
+    if (editBtn.textContent === 'Editar') {
+        section.classList.add('editing');
+        textarea.value = text.textContent.trim();
+        text.style.display = 'none';
+        editContainer.style.display = 'block';
+        editBtn.textContent = 'Cancelar';
+    } else {
+        cancelWork();
+    }
+}
+
+function saveWork() {
+    const section = document.getElementById('trabajo');
+    const text = document.getElementById('workText');
+    const editContainer = document.getElementById('workEdit');
+    const textarea = document.getElementById('workTextarea');
+    const editBtn = section.querySelector('.edit-btn');
+    
+    text.textContent = textarea.value.trim() || 'Escribe aquí sobre tu trabajo...';
+    section.classList.remove('editing');
+    text.style.display = 'block';
+    editContainer.style.display = 'none';
+    editBtn.textContent = 'Editar';
+}
+
+function cancelWork() {
+    const section = document.getElementById('trabajo');
+    const text = document.getElementById('workText');
+    const editContainer = document.getElementById('workEdit');
+    const editBtn = section.querySelector('.edit-btn');
+    
+    section.classList.remove('editing');
+    text.style.display = 'block';
+    editContainer.style.display = 'none';
+    editBtn.textContent = 'Editar';
+}
+
+// Mi Proceso - Edición
+let isProcessEditMode = false;
+
+function toggleProcessEdit() {
+    const section = document.getElementById('proceso');
+    const editBtn = document.getElementById('processEditBtn');
+    const processControls = document.getElementById('processControls');
+    const processItems = document.querySelectorAll('.process-item');
+    
+    isProcessEditMode = !isProcessEditMode;
+    
+    if (isProcessEditMode) {
+        // Activar modo edición
+        section.classList.add('editing');
+        editBtn.textContent = 'Guardar';
+        processControls.style.display = 'flex';
+        
+        // Hacer los items editables
+        processItems.forEach(item => {
+            item.classList.add('editable');
+            item.onclick = function() { editProcessItem(this); };
+        });
+    } else {
+        // Desactivar modo edición
+        section.classList.remove('editing');
+        editBtn.textContent = 'Editar';
+        processControls.style.display = 'none';
+        
+        // Remover editabilidad
+        processItems.forEach(item => {
+            item.classList.remove('editable');
+            item.onclick = null;
+            
+            // Si hay un input activo, guardarlo
+            const input = item.querySelector('.process-edit-input');
+            if (input) {
+                const textSpan = item.querySelector('.process-text');
+                const newText = input.value.trim();
+                if (newText !== '') {
+                    textSpan.textContent = newText;
+                }
+                textSpan.style.display = 'block';
+                input.remove();
+                item.classList.remove('editing');
+            }
+        });
+    }
+}
+
+function editProcessItem(item) {
+    // Solo permitir edición si el modo está activo
+    if (!isProcessEditMode) return;
+    
+    // Evitar edición si ya hay otro elemento en edición
+    const alreadyEditing = document.querySelector('.process-item.editing');
+    if (alreadyEditing && alreadyEditing !== item) {
+        return;
+    }
+    
+    const textSpan = item.querySelector('.process-text');
+    
+    // Si ya está en modo edición, no hacer nada
+    if (item.classList.contains('editing')) {
+        return;
+    }
+    
+    const currentText = textSpan.textContent;
+    
+    // Crear input para edición
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'process-edit-input';
+    input.value = currentText;
+    
+    // Marcar como en edición
+    item.classList.add('editing');
+    
+    // Reemplazar texto con input
+    textSpan.style.display = 'none';
+    item.insertBefore(input, textSpan);
+    
+    // Focus y seleccionar texto
+    input.focus();
+    input.select();
+    
+    // Función para guardar
+    const saveEdit = () => {
+        const newText = input.value.trim();
+        if (newText !== '') {
+            textSpan.textContent = newText;
+        }
+        textSpan.style.display = 'block';
+        input.remove();
+        item.classList.remove('editing');
+    };
+    
+    // Guardar al presionar Enter
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            saveEdit();
+        }
+    });
+    
+    // Guardar al perder el foco
+    input.addEventListener('blur', saveEdit);
+    
+    // Cancelar con Escape
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            textSpan.style.display = 'block';
+            input.remove();
+            item.classList.remove('editing');
+        }
+    });
+}
+
+function deleteProcessItem(event, button) {
+    event.stopPropagation();
+    
+    // Solo permitir eliminar si el modo está activo
+    if (!isProcessEditMode) return;
+    
+    const item = button.closest('.process-item');
+    const processText = item.querySelector('.process-text').textContent;
+    
+    if (confirm(`¿Eliminar el paso "${processText}"?`)) {
+        item.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => {
+            item.remove();
+        }, 300);
+    }
+}
+
+function addProcessItem() {
+    const processGrid = document.getElementById('processGrid');
+    
+    // Crear nuevo item
+    const newItem = document.createElement('div');
+    newItem.className = 'process-item editable';
+    newItem.onclick = function() { editProcessItem(this); };
+    
+    const textSpan = document.createElement('span');
+    textSpan.className = 'process-text';
+    textSpan.textContent = 'Nuevo Paso';
+    
+    const editIcon = document.createElement('span');
+    editIcon.className = 'edit-icon';
+    editIcon.innerHTML = '✎';
+    
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-process-btn';
+    deleteBtn.innerHTML = '×';
+    deleteBtn.onclick = function(e) {
+        deleteProcessItem(e, this);
+    };
+    
+    newItem.appendChild(textSpan);
+    newItem.appendChild(editIcon);
+    newItem.appendChild(deleteBtn);
+    processGrid.appendChild(newItem);
+    
+    // Activar edición automáticamente
+    setTimeout(() => {
+        editProcessItem(newItem);
+    }, 100);
+}
+</script>
+
+</body>
+</html>

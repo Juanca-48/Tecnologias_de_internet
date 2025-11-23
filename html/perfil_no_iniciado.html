@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="../css/perfil_no_iniciado.css" rel="stylesheet" />
+    <title>ZonArte - Perfil (No iniciado)</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index_no_iniciado.html" class="logo">
+            <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
+        </a>
+
+        <!-- Barra de búsqueda centrada -->
+        <div class="search-center">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar...">
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-title">Amigos</div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">AC</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">Anderson Campos</div>
+                            <div class="suggestion-role">Diseñador Gráfico</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                    <div class="suggestion-item">
+                        <div class="suggestion-avatar">MC</div>
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">María Contreras</div>
+                            <div class="suggestion-role">Artista Digital</div>
+                        </div>
+                        <div class="suggestion-action">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación a la derecha -->
+        <nav class="nav-menu">
+            <a href="index_no_iniciado.html" class="nav-item">Inicio</a>
+            <a href="acerca_no_iniciado.html" class="nav-item">Acerca de mi</a>
+            <a href="servicios_no_iniciado.html" class="nav-item">Servicios</a>
+            <a href="social_no_iniciado.html" class="nav-item">Social</a>
+            <a href="contacto_no_iniciado.html" class="nav-item">Contacto</a>
+        </nav>
+
+        <div class="profile-btn">
+            <!-- perfil no iniciado: mostrar icono genérico sin enlaces a perfil -->
+            <div class="profile-img" style="width:50px;height:50px;border-radius:50%;background:linear-gradient(45deg,#cccccc,#999999);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;">
+                ?
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Main Content -->
+    <div class="profile-container">
+        <!-- Profile Header (sin información del usuario) -->
+        <div class="profile-header">
+            <div class="profile-image-section">
+                <div class="profile-image" style="background:linear-gradient(45deg,#cccccc,#999999);"></div>
+            </div>
+            <div class="profile-info">
+                <!-- Nombre oculto intencionalmente -->
+                <h1 class="profile-name"></h1>
+                <p class="profile-title"></p>
+                <p class="profile-location"></p>
+
+                <!-- Estadísticas ocultas en versión no iniciada -->
+                <!-- <div class="profile-stats"> ... </div> -->
+
+                <!-- Mostrar llamada a iniciar sesión - MODIFICADO -->
+                <div style="margin-top:1.5rem;">
+                    <a href="sign_in.html" class="submit-btn" style="display:inline-block;padding:0.8rem 1.2rem;border-radius:12px;text-decoration:none;">Iniciar sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs (sin pestaña Servicios) -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('biografia')">Biografía</button>
+                <button class="tab" onclick="showTab('galeria')">Galería</button>
+                <button class="tab" onclick="showTab('habilidades')">Habilidades</button>
+            </div>
+        </div>
+
+        <!-- Biography Section (sin información) -->
+        <div id="biografia" class="content-section active">
+            <div class="bio-section">
+                <div class="section-title">
+                    Sobre mí
+                </div>
+                <div id="bioText" class="bio-text">
+                    Inicia sesión para ver esta información.
+                </div>
+            </div>
+
+            <div class="bio-section">
+                <div class="section-title">
+                    Experiencia
+                </div>
+                <div id="experienceText" class="bio-text">
+                    Inicia sesión para ver esta información.
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section (vacía para no iniciado) -->
+        <div id="galeria" class="content-section">
+            <div class="bio-section">
+                <div class="section-title">
+                    Mi Galería
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Sin items visibles para usuarios no iniciados -->
+                    <div class="bio-text">Inicia sesión para ver la galería.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section (vacía para no iniciado) -->
+        <div id="habilidades" class="content-section">
+            <div class="bio-section">
+                <div class="section-title">
+                    Habilidades
+                </div>
+                <div id="skillsText" class="bio-text">
+                    Inicia sesión para ver las habilidades.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals y formularios para edición se han omitido en versión no iniciada -->
+
+    <script>
+        // Dropdown search functionality (mantener)
+        const searchInput = document.getElementById('searchInput');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        if (searchInput) {
+            searchInput.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('active');
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('.suggestion-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const name = this.querySelector('.suggestion-name').textContent;
+                if (searchInput) searchInput.value = name;
+                dropdownMenu.classList.remove('active');
+            });
+        });
+
+        // Tab Navigation
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const sections = document.querySelectorAll('.content-section');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            sections.forEach(section => section.classList.remove('active'));
+
+            // event might be undefined if called programmatically; guard:
+            if (typeof event !== 'undefined' && event.target) {
+                event.target.classList.add('active');
+            } else {
+                // fallback: activate first matching tab button
+                const btn = Array.from(tabs).find(t => t.textContent.trim().toLowerCase() === tabName.toLowerCase());
+                if (btn) btn.classList.add('active');
+            }
+            const target = document.getElementById(tabName);
+            if (target) target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
