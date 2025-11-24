@@ -62,7 +62,7 @@
         return;
     }
     try {
-        const response = await fetch('/login_usuario.php', {
+        const response = await fetch('../login_usuario.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -73,13 +73,13 @@
         if (result.success) {
             // Inicio de sesión exitoso
             alert(result.message);
-            const ses = await fetch("/get_session.php").then(r => r.json());
+            const ses = await fetch("../get_session.php").then(r => r.json());
             
             if (ses.inicio === 0){
-                window.location.href = '/html/home_no_iniciado.html'; // Página principal después del login
+                window.location.href = '../html/home_no_iniciado.html'; // Página principal después del login
             }
             else {
-                window.location.href = '/html/home.html'; // Página principal después del login
+                window.location.href = '../html/home.html'; // Página principal después del login
             }
         } else {
             // Error en las credenciales
