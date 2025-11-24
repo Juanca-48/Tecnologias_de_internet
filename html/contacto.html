@@ -8,12 +8,11 @@
     <link href="../css/contacto.css" rel="stylesheet" />
     <title>ZonArte - Contacto</title>
 </head>
-
 <body>
     <div class="container">
         <!-- Header -->
          <header class="header">
-            <a href="index.html" class="logo">
+            <a href="home.html" class="logo">
                 <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
             </a>
 
@@ -61,13 +60,12 @@
         </div>
     </div>
 </div>
-
             <!-- Navegación a la derecha -->
             <nav class="nav-menu">
-                <a href="index.html" class="nav-item">Inicio</a>
+                <a href="home.html" class="nav-item">Inicio</a>
                 <a href="acerca.html" class="nav-item">Acerca de mi</a>
                 <a href="servicios.html" class="nav-item">Servicios</a>
-                <a href="social.html" class="nav-item">Social</a>
+                <!--<a href="social.html" class="nav-item">Social</a>-->
                 <a href="contacto.html" class="nav-item active">Contacto</a>
             </nav>
 
@@ -78,7 +76,19 @@
 </div>
 
         </header>
-
+        <script>
+        fetch("../get_session.php")    
+            .then(r => r.json())
+            .then(data => {
+                if (data.logged) {
+                    document.getElementById("profileImage").src = "../images/" + data.foto;
+                    document.getElementById("profileName").textContent = data.nick;
+                } else {
+                    // opcional: redirigir a login
+                    window.location.href = "login.html";
+                }
+            });
+        </script>
         <!-- Main Content -->
         <main class="main-content">
             <section class="contact-section">
@@ -134,8 +144,10 @@
                     <!-- Panel de información y WhatsApp -->
                     <div class="contact-info-panel">
                         <div class="profile-section">
-                            <img src="../images/IMG_Acerca.png" alt="Perfil del artista" class="contact-profile-img">
-                            <h3>Anderson Muñoz</h3>
+                            <!-- <img src="../images/IMG_Acerca.png" alt="Perfil del artista" class="contact-profile-img"> -->
+                            <img src="../images/" + data.foto alt="Perfil del artista" class="contact-profile-img" id="profileImage">
+                            <!-- <h3>Anderson Muñoz</h3> -->
+                            <h3 class="profile-name" id="profileName">nick_name</h3>
                             <p class="contact-role">Artista Digital & Desarrollador</p>
                         </div>
 
@@ -180,9 +192,7 @@
         <footer class="footer">
             <div class="footer-text">Información legal</div>
             <div class="footer-links">
-                <a href="#privacidad" class="footer-link">Privacidad</a>
-                <a href="#terminos" class="footer-link">Términos</a>
-                <a href="#cookies" class="footer-link">Cookies</a>
+                <a href="terminos.html" class="footer-link">Términos</a>
             </div>
         </footer>
     </div>

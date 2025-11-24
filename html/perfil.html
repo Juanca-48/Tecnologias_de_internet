@@ -10,7 +10,7 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <a href="index.html" class="logo">
+        <a href="home.html" class="logo">
             <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
         </a>
 
@@ -44,10 +44,10 @@
 
         <!-- Navegación a la derecha -->
         <nav class="nav-menu">
-            <a href="index.html" class="nav-item">Inicio</a>
+            <a href="home.html" class="nav-item">Inicio</a>
             <a href="acerca.html" class="nav-item">Acerca de mi</a>
             <a href="servicios.html" class="nav-item">Servicios</a>
-            <a href="social.html" class="nav-item">Social</a>
+            <!--<a href="social.html" class="nav-item">Social</a>-->
             <a href="contacto.html" class="nav-item">Contacto</a>
         </nav>
 
@@ -59,11 +59,18 @@
 
     </header>
     <script>
-    fetch("php/get_session.php")    
+    fetch("../get_session.php")    
         .then(r => r.json())
         .then(data => {
             if (data.logged) {
                 document.getElementById("profileImage").src = "../images/" + data.foto;
+                document.getElementById("profileName").textContent = data.nick;
+                document.getElementById("portfolioImage1").src = "../images/" + data.digital1;
+                document.getElementById("portfolioImage2").src = "../images/" + data.digital2;
+                document.getElementById("portfolioImage3").src = "../images/" + data.digital3;
+                document.getElementById("portfolioImage4").src = "../images/" + data.digital4;
+                document.getElementById("muralImage").src = "../images/" + data.mural;
+                document.getElementById("comisionImage").src = "../images/" + data.comision;
             } else {
                 // opcional: redirigir a login
                 window.location.href = "login.html";
@@ -86,7 +93,8 @@
 
             </div>
             <div class="profile-info">
-                <h1 class="profile-name">ANDERSON MUÑOZ</h1>
+                
+                <h1 class="profile-name" id="profileName">nick_name</h1>
                 <p class="profile-title">Ingeniero en Multimedia</p>
                 <p class="profile-location">Bogotá D.C., Colombia</p>
                 <div class="profile-stats">
@@ -164,17 +172,32 @@
                 </div>
                 <div class="gallery-grid" id="galleryGrid">
                     <div class="gallery-item">
-                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #4ecdc4, #667eea);"></div>
+                        <div> <img src="../images/" + data.digital1 alt="Arte 1" class="portfolio-image" id="portfolioImage1"> </div>
                         <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">×</button>
                         <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
                     </div>
                     <div class="gallery-item">
-                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                        <div> <img src="../images/" + data.digital2 alt="Arte 2" class="portfolio-image" id="portfolioImage2"> </div>
                         <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">×</button>
                         <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
                     </div>
                     <div class="gallery-item">
-                        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #fa709a, #fee140);"></div>
+                        <div> <img src="../images/" + data.digital3 alt="Arte 3" class="portfolio-image" id="portfolioImage3"> </div>
+                        <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">Editar</button>
+                        <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
+                    </div>
+                    <div class="gallery-item">
+                        <div> <img src="../images/" + data.digital4 alt="Arte 4" class="portfolio-image" id="portfolioImage4"> </div>
+                        <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">Editar</button>
+                        <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
+                    </div>
+                    <div class="gallery-item">
+                        <div> <img src="../images/" + data.mural alt="Mural" class="portfolio-image" id="muralImage"> </div>
+                        <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">Editar</button>
+                        <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
+                    </div>
+                    <div class="gallery-item">
+                        <div> <img src="../images/" + data.comision alt="Mural" class="portfolio-image" id="comisionImage"> </div>
                         <button class="delete-image-btn gallery-delete-mode" onclick="deleteImage(this)">Editar</button>
                         <button class="edit-gallery-image-btn gallery-delete-mode" onclick="editGalleryImage(this)">Editar</button>
                     </div>
@@ -427,31 +450,6 @@
             skillsEdit.style.display = 'none';
         }
 
-//        // Profile Image
-//        function changeProfileImage() {
-//            document.getElementById('profileInput').click();
-//        }
-//            document.getElementById('profileInput').addEventListener('change', function() {
-//             const file = this.files[0];
-//             if (!file) return;
-//
-//            const formData = new FormData();
-//             formData.append('profile_pic', file);
-//
-//             fetch("upload_profile.php", {
-//        method: "POST",
-//        body: formData
-//         })
-//    .then(res => res.json())
-//    .then(data => {
-//        if (data.success) {
-//            document.getElementById('profileImage').src = data.newPath;
-//         } else {
-//            alert("Error: " + data.message);
-//         }
-//         });
-//        });
-
         // Cambiar foto de perfil
         function changeProfileImage() {
             document.getElementById("profileInput").click();
@@ -472,7 +470,7 @@
             const formData = new FormData();
             formData.append("profileImage", file);
 
-            fetch("php/cargar_imagen.php", {  
+            fetch("../cargar_imagen_perfil.php", {  
                 method: "POST",
                 body: formData  
             })
