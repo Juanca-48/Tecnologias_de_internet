@@ -14,7 +14,7 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="home.html" class="logo">
                 <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
             </a>
 
@@ -65,10 +65,10 @@
 
             <!-- NavegaciÃ³n a la derecha -->
             <nav class="nav-menu">
-                <a href="index.html" class="nav-item">Inicio</a>
+                <a href="home.html" class="nav-item">Inicio</a>
                 <a href="acerca.html" class="nav-item active">Acerca de mi</a>
                 <a href="servicios.html" class="nav-item">Servicios</a>
-               <!-- <a href="social.html" class="nav-item">Social</a>-->
+                <!--<a href="social.html" class="nav-item">Social</a>-->
                 <a href="contacto.html" class="nav-item">Contacto</a>
             </nav>
 
@@ -80,10 +80,23 @@
 
         </header>
 
+        <script>
+        fetch("../get_session.php")    
+            .then(r => r.json())
+            .then(data => {
+                if (data.logged) {
+                    document.getElementById("profileImage").src = "../images/" + data.foto;
+                } else {
+                    // opcional: redirigir a login
+                    window.location.href = "login.html";
+                }
+            });
+        </script>
+        
         <!-- Main Content -->
         <main class="main-content">
             <section class="about-section">
-                <!-- TÃ­tulo Principal -->
+                <!-- Titulo Principal -->
                 <div class="section-header">
                     <h1 class="main-title">ACERCA DE MI</h1>
                 </div>
@@ -92,7 +105,8 @@
                 <div class="about-content">
                     <!-- Imagen de perfil/arte -->
                     <div class="profile-art">
-                        <img src="../images/IMG_Acerca.png" alt="Imagen de perfil del artista" class="art-image">
+                        <!--<img src="../images/IMG_Acerca.png" alt="Imagen de perfil del artista" class="art-image">-->
+                        <img src="../images/" + data.foto alt="Perfil" class="art-image" id="profileImage">
                     </div>
 
                     <div class="info-panel">
@@ -126,11 +140,11 @@
         </main>
             <!-- Footer -->
             <footer class="footer">
-            <div class="footer-text">Terminos y condiciones</div>
-            <div class="footer-links">
-                <a href="terminos.html" class="footer-link">Términos</a>
-            </div>
-        </footer>
+                <div class="footer-text">Información legal</div>
+                <div class="footer-links">
+                    <a href="terminos.html" class="footer-link">Términos</a>
+                </div>
+            </footer>
     </div>
 <script>
     const searchInput = document.getElementById('searchInput');

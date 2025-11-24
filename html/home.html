@@ -11,7 +11,7 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="home.html" class="logo">
                 <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
             </a>
 
@@ -62,7 +62,7 @@
 
             <!-- Navegación a la derecha -->
             <nav class="nav-menu">
-                <a href="index.html" class="nav-item active">Inicio</a>
+                <a href="home.html" class="nav-item active">Inicio</a>
                 <a href="acerca.html" class="nav-item">Acerca de mi</a>
                 <a href="servicios.html" class="nav-item">Servicios</a>
                 <!--<a href="social.html" class="nav-item">Social</a>-->
@@ -70,42 +70,61 @@
             </nav>
 
             <div class="profile-btn">
-    <a href="perfil.html">
+    <a href="/html/perfil.html">
         <img src="../images/Perfil.png" alt="Perfil" class="profile-img">
     </a>
 </div>
 
         </header>
 
+        <script>
+        fetch("../get_session.php")    
+            .then(r => r.json())
+            .then(data => {
+                if (data.logged) {
+                    document.getElementById("portfolioImage1").src = "../images/" + data.digital1;
+                    document.getElementById("portfolioImage2").src = "../images/" + data.digital2;
+                    document.getElementById("portfolioImage3").src = "../images/" + data.digital3;
+                    document.getElementById("portfolioImage4").src = "../images/" + data.digital4;
+                    document.getElementById("muralImage").src = "../images/" + data.mural;
+                    document.getElementById("comisionImage").src = "../images/" + data.comision;
+                } else {
+                    // opcional: redirigir a login
+                    window.location.href = "login.html";
+                }
+            });
+        </script>        
+        
         <!-- Main Content -->
         <main class="main-content">
             <!-- Portfolio Grid -->
             <section class="portfolio-section">
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <img src="../images/ART_1.png" alt="Arte 1" class="portfolio-img">
+                        <!--<img src="../images/ART_1.png" alt="Arte 1" class="portfolio-img">-->
+                        <img src="../images/" + data.digital1 alt="Arte 1" class="portfolio-img" id="portfolioImage1">
                     </div>
                     <div class="portfolio-item">
-                        <img src="../images/ART_2.png" alt="Arte 2" class="portfolio-img">
+                        <!--<img src="../images/ART_2.png" alt="Arte 2" class="portfolio-img">-->
+                        <img src="../images/" + data.digital2 alt="Arte 2" class="portfolio-img" id="portfolioImage2">
                     </div>
                     <div class="portfolio-item">
-                        <img src="../images/ART_3.png" alt="Arte 3" class="portfolio-img">
+                        <!--<img src="../images/ART_3.png" alt="Arte 3" class="portfolio-img">-->
+                        <img src="../images/" + data.digital3 alt="Arte 3" class="portfolio-img" id="portfolioImage3">
+                    </div>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <!--<img src="../images/ART_4.png" alt="Arte 4" class="portfolio-img">-->
+                        <img src="../images/" + data.digital4 alt="Arte 4" class="portfolio-img" id="portfolioImage4">
                     </div>
                     <div class="portfolio-item">
-                        <img src="../images/ART_4.png" alt="Arte 4" class="portfolio-img">
+                        <!--<img src="../images/ART_5.png" alt="Arte 5" class="portfolio-img">-->
+                        <img src="../images/" + data.mural alt="Mural" class="portfolio-img" id="muralImage">
                     </div>
                     <div class="portfolio-item">
-                        <img src="../images/ART_5.png" alt="Arte 5" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_1.png" alt="Arte 1" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_2.png" alt="Arte 2" class="portfolio-img">
-                    </div>
-                    <div class="portfolio-item">
-                        <img src="../images/ART_3.png" alt="Arte 3" class="portfolio-img">
-                    </div>
+                        <!--<img src="../images/ART_1.png" alt="Arte 1" class="portfolio-img">-->
+                        <img src="../images/" + data.comision alt="Comision" class="portfolio-img" id="comisionImage">
                 </div>
             </section>
 
@@ -113,12 +132,9 @@
             <section id="trabajo" class="info-section">
                 <h2 class="section-title">MI TRABAJO</h2>
                 <p class="section-text">
-                    Me he desempeñado como ilustrador y animador freelance he trabajado con clientes internacionales, 
-                    desarrollando proyectos que van desde piezas ilustradas hasta animaciones personalizadas. 
-                    Mi trabajo se caracteriza por adaptarme a las necesidades de cada persona.
-                    Si bien la mayoría de mis colaboraciones se mantienen privadas por acuerdos de confidencialidad, 
-                    aquí presento una muestra de proyectos que reflejan mi estilo, mi proceso creativo y la pasión 
-                    que pongo en cada encargo.
+                    Diseñador Multimedia Senior - Creative Studio (2021 - Presente) 
+					Desarrollador Frontend - Tech Solutions (2019 - 2021) 
+    				Diseñador Gráfico - Freelance (2018 - 2019) 
                 </p>
             </section>
 

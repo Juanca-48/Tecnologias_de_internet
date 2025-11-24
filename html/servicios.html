@@ -12,7 +12,7 @@
 
 <body>
     <header class="header">
-        <a href="index.html" class="logo">
+        <a href="home.html" class="logo">
             <img src="../images/Logo_Nombre.png" alt="ZonArte Logo" class="logo-img">
         </a>
 
@@ -63,11 +63,11 @@
 
         <!-- Navegación a la derecha -->
         <nav class="nav-menu">
-            <a href="index.html" class="nav-item">Inicio</a>
+            <a href="home.html" class="nav-item">Inicio</a>
             <a href="acerca.html" class="nav-item">Acerca de mi</a>
             <a href="servicios.html" class="nav-item active">Servicios</a>
-           <!-- <a href="social.html" class="nav-item">Social</a>-->
-             <a href="contacto.html" class="nav-item">Contacto</a>
+            <!--<a href="social.html" class="nav-item">Social</a>-->
+            <a href="contacto.html" class="nav-item">Contacto</a>
         </nav>
         
        <div class="profile-btn">
@@ -76,64 +76,91 @@
     </a>
 </div>
 
-    </header>
+        </header>
 
-    <main>
-        <div class="page-container">
-            <div class="services-section">
-                <div class="services-wrapper">
-                    <div class="section-header">
-                        <h1 class="section-title">SERVICIOS</h1>
-                    </div>
+        <script>
+        fetch("../get_session.php")    
+            .then(r => r.json())
+            .then(data => {
+                if (data.logged) {
+                    document.getElementById("portfolioImage1").src = "../images/" + data.digital1;
+                    document.getElementById("portfolioImage2").src = "../images/" + data.digital2;
+                    document.getElementById("portfolioImage3").src = "../images/" + data.digital3;
+                    document.getElementById("portfolioImage4").src = "../images/" + data.digital4;
+                    document.getElementById("muralImage").src = "../images/" + data.mural;
+                    document.getElementById("comisionImage").src = "../images/" + data.comision;
+                } else {
+                    // opcional: redirigir a login
+                    window.location.href = "login.html";
+                }
+            });
+        </script>     
+    
+        <main>
+            <div class="page-container">
+                <div class="services-section">
+                    <div class="services-wrapper">
+                        <div class="section-header">
+                            <h1 class="section-title">SERVICIOS</h1>
+                        </div>
 
-                    <div class="service-card">
-                        <div><span class="section-title">ASESORÍA</span></div>
-                        <div><span class="service-description">Además de mi trabajo como ilustrador y animador,
-                                también ofrezco asesorías y cursos personalizados para quienes quieran mejorar sus
-                                habilidades en ilustración, animación digital y programación creativa.</span></div>
-                    </div>
+                        <div class="service-card">
+                            <div><span class="section-title">ASESORÍA</span></div>
+                            <div><span class="service-description">Además de mi trabajo como ilustrador y animador,
+                                    también ofrezco asesorías y cursos personalizados para quienes quieran mejorar sus
+                                    habilidades en ilustración, animación digital y programación creativa.</span></div>
+                        </div>
 
-                    <div class="service-card">
-                        <div><span class="section-title">ILUSTRACIÓN DIGITAL</span></div>
-                        <div><span class="service-description">Ilustraciones digitales creadas ajustadas a la
-                                necesidad del cliente con variedad de estilos y con diferentes usos, como: diseño de
-                                personaje, ilustración para cuento, retrato entre otros</span></div>
-                        <div class="gallery-container">
-                            <div class="image-grid">
-                                <img src="../images/ART_1.png" alt="ART_1" class="portfolio-image">
-                                <img src="../images/ART_2.png" alt="ART_2" class="portfolio-image">
-                                <img src="../images/ART_3.png" alt="ART_3" class="portfolio-image">
-                                <img src="../images/ART_4.png" alt="ART_4" class="portfolio-image">
+                        <div class="service-card">
+                            <div><span class="section-title">ILUSTRACIÓN DIGITAL</span></div>
+                            <div><span class="service-description">Ilustraciones digitales creadas ajustadas a la
+                                    necesidad del cliente con variedad de estilos y con diferentes usos, como: diseño de
+                                    personaje, ilustración para cuento, retrato entre otros</span></div>
+                            <div class="gallery-container">
+                                <div class="image-grid">
+                                    <!--<img src="../images/ART_1.png" alt="Arte 1" class="portfolio-image">-->
+                        			<img src="../images/" + data.digital1 alt="Arte 1" class="portfolio-image" id="portfolioImage1">
+                                    <!--<img src="../images/ART_2.png" alt="ART_2" class="portfolio-image">-->
+                                    <img src="../images/" + data.digital2 alt="Arte 2" class="portfolio-image" id="portfolioImage2">
+                                </div>
+                                <div class="image-grid">
+                                    <!--<img src="../images/ART_3.png" alt="ART_3" class="portfolio-image">-->
+                                    <img src="../images/" + data.digital3 alt="Arte 3" class="portfolio-image" id="portfolioImage3">
+                                    <!--<img src="../images/ART_4.png" alt="ART_4" class="portfolio-image">-->
+                                    <img src="../images/" + data.digital4 alt="Arte 4" class="portfolio-image" id="portfolioImage4">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="service-card">
-                        <div><span class="section-title">MURALISMO</span></div>
-                        <div><span class="service-description">Servicio de diseño y pintado de mural tanto en
-                                interior como exterior siguiendo las necesidades de cuidado y duración</span></div>
-                        <div class="gallery-container">
-                            <img src="../images/ART_5.png" alt="ART_5" class="single-image">
+                        <div class="service-card">
+                            <div><span class="section-title">MURALISMO</span></div>
+                            <div><span class="service-description">Servicio de diseño y pintado de mural tanto en
+                                    interior como exterior siguiendo las necesidades de cuidado y duración</span></div>
+                            <div class="gallery-container">
+                                <!--<img src="../images/ART_5.png" alt="ART_5" class="single-image">-->
+                                <img src="../images/" + data.mural alt="Mural" class="single-image" id="muralImage">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="service-card">
-                        <div><span class="section-title">PRECIOS / COMISIONES</span></div>
-                        <div class="gallery-container">
-                            <img src="../images/COMISION.png" alt="COMISION" class="single-image">
+                        <div class="service-card">
+                            <div><span class="section-title">PRECIOS / COMISIONES</span></div>
+                            <div class="gallery-container">
+                                <!--<img src="../images/COMISION.png" alt="COMISION" class="single-image">-->
+                                <img src="../images/" + data.comision alt="Comision" class="single-image" id="comisionImage">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-   <footer class="footer">
-            <div class="footer-text">Terminos y condiciones</div>
+        </main>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-text">Información legal</div>
             <div class="footer-links">
                 <a href="terminos.html" class="footer-link">Términos</a>
             </div>
         </footer>
-        </div>
-    </main>
+    </div>
 <script>
     const searchInput = document.getElementById('searchInput');
     const dropdownMenu = document.getElementById('dropdownMenu');
